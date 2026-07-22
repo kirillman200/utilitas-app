@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleExplorer from '../../components/ArticleExplorer.vue';
+import { SITE, absolute } from '../../data/site';
+import { articlePath, articles } from '../../data/articles';
+
+const title = 'Practical browser tool guides | Utilitas Field Notes';
+const description = 'Read practical, original guides for editing SVG files, estimating project materials, protecting photo privacy, and choosing browser-first tools.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Utilitas Field Notes',
+  url: absolute('/articles/'),
+  description,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: articles.length,
+    itemListElement: articles.map((article, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: article.title,
+      url: absolute(articlePath(article)),
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description} path="/articles/" schema={schema}>
+  <section class="manual-hero">
+    <div class="shell manual-hero-grid">
+      <div>
+        <p class="kicker">Utilitas Field Notes / Edition 01</p>
+        <h1>Useful methods,<br /><span>made legible.</span></h1>
+      </div>
+      <div class="manual-intro">
+        <p>Practical guidance for the work around the tools: how to inspect an SVG, estimate materials, remove photo metadata, and understand a browser-first privacy claim.</p>
+        <dl>
+          <div><dt>Published</dt><dd>{articles.length} original guides</dd></div>
+          <div><dt>Access</dt><dd>Free, no account</dd></div>
+          <div><dt>Publisher</dt><dd>{SITE.name}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes-index section-pad">
+    <div class="shell">
+      <ArticleExplorer articles={articles} client:idle />
+    </div>
+  </section>
+
+  <section class="editorial-promise">
+    <div class="shell editorial-promise-grid">
+      <p class="kicker">Editorial standard</p>
+      <h2>Written to help someone finish a real task.</h2>
+      <div>
+        <p>Every note states practical limits, links to a useful next action, and avoids inventing capabilities. Articles are reviewed when the related tool or method changes.</p>
+        <a class="text-link inverse" href="/about/">How Utilitas is built <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

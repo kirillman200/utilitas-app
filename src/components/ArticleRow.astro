@@ -1,0 +1,26 @@
+---
+import type { ArticleDefinition } from '../data/articles';
+import { articlePath } from '../data/articles';
+
+interface Props {
+  article: ArticleDefinition;
+  index: number;
+}
+
+const { article, index } = Astro.props;
+---
+
+<article class="note-row">
+  <p class="note-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</p>
+  <div class="note-topic">
+    <span>{article.topic}</span>
+    <span>{article.readTime}</span>
+  </div>
+  <div class="note-copy">
+    <h3><a href={articlePath(article)}>{article.shortTitle}</a></h3>
+    <p>{article.description}</p>
+  </div>
+  <a class="note-open" href={articlePath(article)} aria-label={`Read ${article.shortTitle}`}>
+    <span>Read</span><span aria-hidden="true">&rarr;</span>
+  </a>
+</article>

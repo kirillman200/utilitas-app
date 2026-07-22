@@ -1,6 +1,7 @@
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { articlePath, articles } from '../src/data/articles';
 import { SITE, absolute, projects, publicRoutes } from '../src/data/site';
 
 const root = resolve(import.meta.dirname, '..');
@@ -52,6 +53,20 @@ describe('public route contract', () => {
     expect(new Set(publicRoutes.map((route) => route.title)).size).toBe(publicRoutes.length);
     expect(new Set(publicRoutes.map((route) => route.description)).size).toBe(publicRoutes.length);
   });
+
+  it('keeps internal page links inside the built public surface', () => {
+    const publicPaths = new Set(publicRoutes.map((route) => route.path));
+    const utilityPaths = new Set(['/robots.txt', '/sitemap.xml', '/llms.txt', '/ads.txt']);
+
+    for (const route of publicRoutes) {
+      const html = read(outputFile(route.path));
+      const hrefs = [...html.matchAll(/href="(\/[^"#?]*)/g)].map((match) => match[1]);
+      for (const href of hrefs) {
+        if (href.startsWith('/assets/') || href.startsWith('/_astro/') || /\.(?:svg|ico|png|webmanifest)$/.test(href)) continue;
+        expect(publicPaths.has(href) || utilityPaths.has(href), `${route.path} -> ${href}`).toBe(true);
+      }
+    }
+  });
 });
 
 describe('project catalogue contract', () => {
@@ -91,6 +106,44 @@ describe('project catalogue contract', () => {
       expect(project.description.length, project.name).toBeGreaterThan(80);
       expect(project.privacy.length, project.name).toBeGreaterThan(60);
       expect(project.features.length, project.name).toBeGreaterThanOrEqual(4);
+    }
+  });
+});
+
+describe('Field Notes content contract', () => {
+  it('publishes a substantive, unique article library', () => {
+    expect(articles.length).toBeGreaterThanOrEqual(6);
+    expect(new Set(articles.map((article) => article.title)).size).toBe(articles.length);
+    expect(new Set(articles.map((article) => article.description)).size).toBe(articles.length);
+
+    for (const article of articles) {
+      const html = read(outputFile(articlePath(article)));
+      const text = html
+        .replace(/<script[\s\S]*?<\/script>/g, ' ')
+        .replace(/<style[\s\S]*?<\/style>/g, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&[a-z]+;/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      const words = text.split(' ').filter(Boolean);
+
+      expect(words.length, `${article.slug} word count`).toBeGreaterThan(600);
+      expect(html, `${article.slug} article schema`).toContain('"@type":"Article"');
+      expect(html, `${article.slug} published date`).toContain(`"datePublished":"${article.published}"`);
+      expect(html, `${article.slug} modified date`).toContain(`"dateModified":"${article.updated}"`);
+      expect(html, `${article.slug} article hub link`).toContain('href="/articles/"');
+      expect(article.sections.length, article.slug).toBeGreaterThanOrEqual(4);
+      expect(article.takeaways.length, article.slug).toBeGreaterThanOrEqual(3);
+    }
+  });
+
+  it('links every article from the hub and lists it in machine-readable discovery', () => {
+    const hub = read(outputFile('/articles/'));
+    const llms = read(join(dist, 'llms.txt'));
+    for (const article of articles) {
+      expect(hub, article.slug).toContain(`href="${articlePath(article)}"`);
+      expect(llms, article.slug).toContain(`${SITE.origin}${articlePath(article)}`);
+      expect(llms, article.title).toContain(article.title);
     }
   });
 });
@@ -179,6 +232,8 @@ describe('security, privacy, and deploy boundary', () => {
 
     const ico = readFileSync(join(dist, 'favicon.ico'));
     expect([...ico.subarray(0, 4)]).toEqual([0, 0, 1, 0]);
+    const share = readFileSync(join(dist, 'assets', 'utilitas-share.png'));
+    expect(share.subarray(1, 4).toString()).toBe('PNG');
   });
 
   it('keeps private and source files outside dist', () => {

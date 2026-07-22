@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { articlePath, articles } from '../data/articles';
 import { SITE, projects, publicRoutes } from '../data/site';
 
 export const GET: APIRoute = () => {
@@ -7,6 +8,7 @@ export const GET: APIRoute = () => {
     return `- ${project.name} (${project.status}): ${project.description}${destination}`;
   });
   const pageLines = publicRoutes.map((route) => `- [${route.title}](${SITE.origin}${route.path})`);
+  const articleLines = articles.map((article) => `- [${article.title}](${SITE.origin}${articlePath(article)}): ${article.description}`);
   const body = [
     '# Utilitas',
     '',
@@ -19,6 +21,10 @@ export const GET: APIRoute = () => {
     ...projectLines,
     '',
     'SVG Vector Lab remains at https://svgvectorlab.com/. Project Quantity Lab is live at https://home.utilitas.app/. Photo Privacy Lab is live at https://exif.utilitas.app/.',
+    '',
+    '## Field Notes',
+    '',
+    ...articleLines,
     '',
     '## Public pages',
     '',

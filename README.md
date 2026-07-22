@@ -1,6 +1,6 @@
 # Utilitas
 
-The main collection site for focused browser tools at `https://utilitas.app`.
+The editorial home for focused browser tools and practical Field Notes at `https://utilitas.app`.
 
 ## Stack
 
@@ -24,9 +24,11 @@ npm run validate
 npm run deploy:dry
 ```
 
+See `PRODUCTION_READINESS.md` for the release boundary, guide mapping, and required live checks.
+
 ## Content model
 
-`src/data/site.ts` is the source of truth for the production origin, project catalogue, and canonical public routes. Adding or changing a project should update that registry first. The homepage, project explorer, structured data, sitemap, and `llms.txt` consume it.
+`src/data/site.ts` is the source of truth for the production origin, project catalogue, and canonical public routes. `src/data/articles.ts` owns the Field Notes library. The homepage, structured data, sitemap, tests, and `llms.txt` consume these registries.
 
 SVG Vector Lab intentionally remains at `https://svgvectorlab.com/`. Do not create a duplicate editor page or redirect that domain to Utilitas.
 
