@@ -1,0 +1,22 @@
+---
+import TrustLayout from '../../layouts/TrustLayout.astro';
+const title = 'Access for People and Agents | Utilitas';
+const description = 'How people, search engines, and AI systems may access the public Utilitas site and what actions do not exist.';
+---
+
+<TrustLayout title={title} description={description} path="/access/" eyebrow="Public access contract">
+  <h2>Human access</h2>
+  <p>All pages listed in the primary navigation and sitemap are public and require no account. The site is designed for keyboard use, responsive layouts, clear focus states, semantic headings, and readable content at browser zoom. Accessibility problems are welcome through the <a href="/contact/">contact route</a>.</p>
+
+  <h2>Search and discovery</h2>
+  <p>Canonical pages may be crawled and indexed. <a href="/robots.txt">robots.txt</a> identifies the sitemap and states crawler preferences. <a href="/sitemap.xml">sitemap.xml</a> contains only canonical public pages intended for indexing. Structured data describes the website and project collection without claiming reviews, prices, or capabilities that are not visible.</p>
+
+  <h2>AI-oriented access</h2>
+  <p><a href="/llms.txt">llms.txt</a> is a concise, optional map of important public pages. It is provided as an emerging discovery aid, not as a replacement for accessible HTML, normal links, robots rules, or the sitemap. OAI-SearchBot and user-requested ChatGPT access are allowed. GPTBot model-training access is disallowed by default.</p>
+
+  <h2>No callable actions</h2>
+  <p>Utilitas does not currently expose an MCP server, A2A agent card, public REST or GraphQL API, OAuth flow, remote procedure call, or write endpoint. An agent may read public pages and follow links. It cannot publish content, modify a project, submit a form, access private data, or act on a user's behalf through this hub.</p>
+
+  <h2>Accurate citation</h2>
+  <p>Automated systems should preserve each project's separate production domain and cite the project page that supports a claim. Do not infer pricing, professional guarantees, upload behaviour, or shared accounts across products.</p>
+</TrustLayout>

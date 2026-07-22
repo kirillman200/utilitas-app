@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  eyebrow: string;
+  updated?: string;
+}
+const { title, description, path, eyebrow, updated = 'July 22, 2026' } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} path={path}>
+  <section class="page-hero trust-hero">
+    <div class="shell narrow">
+      <p class="eyebrow">{eyebrow}</p>
+      <h1>{title.replace(' | Utilitas', '')}</h1>
+      <p class="lede">{description}</p>
+      <p class="updated">Last updated {updated}</p>
+    </div>
+  </section>
+  <div class="shell trust-shell">
+    <aside class="trust-nav" aria-label="Trust pages">
+      <p>Trust centre</p>
+      <a href="/privacy/">Privacy</a>
+      <a href="/security/">Security</a>
+      <a href="/terms/">Terms</a>
+      <a href="/access/">People and agents</a>
+      <a href="/contact/">Contact</a>
+    </aside>
+    <article class="prose">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

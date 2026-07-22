@@ -1,0 +1,25 @@
+---
+import TrustLayout from '../../layouts/TrustLayout.astro';
+const title = 'Security | Utilitas';
+const description = 'The Utilitas hub security boundary, deployment safeguards, and responsible reporting guidance.';
+---
+
+<TrustLayout title={title} description={description} path="/security/" eyebrow="Trust centre">
+  <h2>Supported surface</h2>
+  <p>The Utilitas hub is a static public website. It has no sign-in, account database, payment flow, public API, upload endpoint, OAuth integration, or privileged agent action. Reports should focus on behaviour reachable from <code>https://utilitas.app</code> or on a clearly identified linked project.</p>
+
+  <h2>Deployment boundary</h2>
+  <p>Only the generated <code>dist/</code> directory is intended for publication. Source files, tests, environment files, repository history, package caches, and local tooling remain outside the deployed asset directory. Missing routes are configured to return a real 404 response.</p>
+
+  <h2>Browser protections</h2>
+  <p>The deployment includes a nonce-based strict Content Security Policy, framing protection, MIME sniffing protection, a limited referrer policy, disabled unused browser capabilities, and HTTPS transport security. Google AdSense is the only approved third-party runtime script. A Cloudflare Worker adds a fresh nonce to every script before returning HTML.</p>
+
+  <h2>Responsible reporting</h2>
+  <p>For a suspected issue, follow the private reporting guidance available from the maintainer profile on the <a href="/contact/">contact page</a>. Include the affected URL, impact, reproducible steps, and a minimal proof. Do not access other people's data, degrade availability, run broad automated scans, or publish an uncorrected vulnerability.</p>
+
+  <h2>Project-specific reports</h2>
+  <p>A vulnerability inside an individual tool should be reported through that project's security route or repository policy. Product code, file parsers, browser storage, and export behaviour are outside this hub's static browsing boundary even when the project appears in this directory.</p>
+
+  <h2>No security guarantee</h2>
+  <p>Reasonable safeguards reduce risk but cannot guarantee that software is free of defects. Keep your browser updated and retain original copies of important work before processing or exporting files with any tool.</p>
+</TrustLayout>

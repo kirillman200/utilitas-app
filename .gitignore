@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.wrangler-config/
+coverage/
+test-results/
+.env
+.env.*
+!.env.example
+*.log

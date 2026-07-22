@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectExplorer from '../../components/ProjectExplorer.vue';
+import { SITE, projects } from '../../data/site';
+
+const title = 'Projects | Utilitas';
+const description = 'Explore every live Utilitas browser tool for creating, planning, and protecting everyday work.';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Utilitas projects',
+  url: `${SITE.origin}/projects/`,
+  description,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: projects.length,
+    itemListElement: projects.map((project, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: project.name,
+      description: project.description,
+      ...(project.url ? { url: project.url } : {}),
+    })),
+  },
+};
+---
+
+<BaseLayout title={title} description={description} path="/projects/" schema={schema}>
+  <section class="page-hero projects-hero">
+    <div class="shell page-hero-grid">
+      <div>
+        <p class="eyebrow">The project shelf</p>
+        <h1>Tools with a clear job to do</h1>
+      </div>
+      <p class="lede">
+        Browse the live collection by purpose. Every project links directly to its own production domain and keeps its own privacy boundary.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-pad project-catalogue">
+    <div class="shell">
+      <ProjectExplorer projects={projects} client:idle />
+    </div>
+  </section>
+
+  <section class="project-domain-note">
+    <div class="shell domain-note-inner">
+      <div class="note-icon" aria-hidden="true">↗</div>
+      <div>
+        <h2>Project domains remain independent</h2>
+        <p>
+          SVG Vector Lab continues at <a href="https://svgvectorlab.com/">svgvectorlab.com</a>. Project Quantity Lab is live at <a href="https://home.utilitas.app/">home.utilitas.app</a>, and Photo Privacy Lab is live at <a href="https://exif.utilitas.app/">exif.utilitas.app</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE, projects } from '../data/site';
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.origin,
+    description: SITE.description,
+    inLanguage: 'en-CA',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Utilitas browser tools',
+    url: SITE.origin,
+    description: SITE.description,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: projects.length,
+      itemListElement: projects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: project.name,
+        ...(project.url ? { url: project.url } : {}),
+      })),
+    },
+  },
+];
+---
+
+<BaseLayout title={SITE.title} description={SITE.description} path="/" schema={schema}>
+  <section class="home-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="spark" aria-hidden="true">✦</span> Practical tools, thoughtfully made</p>
+        <h1>Small tools.<br /><em>Real utility.</em></h1>
+        <p class="hero-lede">
+          Utilitas brings together focused browser tools for making, planning, and protecting everyday work.
+          Each product is useful on its own and clear about what happens to your data.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/projects/">Browse all projects <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="/about/">How we build <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-proof" aria-label="Product principles">
+          <span><i aria-hidden="true">✓</i> Browser first</span>
+          <span><i aria-hidden="true">✓</i> Clear data boundaries</span>
+          <span><i aria-hidden="true">✓</i> No account required</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Three Utilitas project areas: create, plan, and protect">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="tool-tile tile-create">
+          <span class="tile-icon">⌁</span>
+          <div><small>Create</small><strong>Shape an idea</strong></div>
+        </div>
+        <div class="tool-tile tile-plan">
+          <span class="tile-icon">▦</span>
+          <div><small>Plan</small><strong>Measure the work</strong></div>
+        </div>
+        <div class="tool-tile tile-protect">
+          <span class="tile-icon">◇</span>
+          <div><small>Protect</small><strong>Share with care</strong></div>
+        </div>
+        <div class="visual-core">
+          <span class="brand-mark large" aria-hidden="true"><i></i><i></i><i></i></span>
+          <strong>utilitas</strong>
+          <small>useful by design</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-showcase section-pad">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The collection</p>
+          <h2>One home, distinct products</h2>
+        </div>
+        <p>
+          Every project keeps its own purpose, domain, and privacy promise. Utilitas makes the collection easier to discover without flattening those differences.
+        </p>
+      </div>
+      <div class="project-grid">
+        {projects.map((project, index) => <ProjectCard project={project} featured={index === 0} />)}
+      </div>
+      <div class="showcase-action">
+        <a class="button button-ghost" href="/projects/">See full project details <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles section-pad">
+    <div class="shell principles-grid">
+      <div class="principles-copy">
+        <p class="eyebrow">A calmer kind of software</p>
+        <h2>Built around the work, not the account</h2>
+        <p>
+          A useful tool should explain its assumptions, do its job well, and stay out of the way. The Utilitas hub has no sign-up or behavioural analytics, and its advertising use is disclosed in the privacy policy.
+        </p>
+        <a class="text-link" href="/privacy/">Read the privacy boundary <span aria-hidden="true">→</span></a>
+      </div>
+      <ol class="principle-list">
+        <li>
+          <span>01</span>
+          <div><h3>Focused by default</h3><p>Each product solves a coherent problem instead of accumulating unrelated features.</p></div>
+        </li>
+        <li>
+          <span>02</span>
+          <div><h3>Honest about limits</h3><p>Estimates, supported formats, and missing capabilities are stated where they matter.</p></div>
+        </li>
+        <li>
+          <span>03</span>
+          <div><h3>Private where practical</h3><p>Browser-local processing is preferred for files and personal project data.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="standards section-pad">
+    <div class="shell standards-inner">
+      <div>
+        <p class="eyebrow">Readable by people and machines</p>
+        <h2>Clear public information, without invented capabilities</h2>
+      </div>
+      <div class="standards-points">
+        <p><strong>Search ready.</strong> Canonical pages, a generated sitemap, accurate metadata, and structured data share one route inventory.</p>
+        <p><strong>Agent legible.</strong> Public pages and <a href="/llms.txt">llms.txt</a> describe the collection, while clearly stating that no public API or autonomous actions exist.</p>
+        <p><strong>Privacy scoped.</strong> Search access is separate from model-training access, and each product publishes its own data boundary.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-cta">
+    <div class="shell closing-card">
+      <span class="closing-glyph" aria-hidden="true">✦</span>
+      <p class="eyebrow">Start with something useful</p>
+      <h2>Explore the collection</h2>
+      <p>Open a live tool today or see what is being prepared next.</p>
+      <a class="button button-light" href="/projects/">View all projects <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</BaseLayout>

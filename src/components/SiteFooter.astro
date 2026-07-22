@@ -1,0 +1,37 @@
+---
+import { SITE } from '../data/site';
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand-footer" href="/">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>{SITE.name}</span>
+      </a>
+      <p>Focused browser tools with clear boundaries.</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <a href="/projects/">All projects</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+    </div>
+    <div>
+      <h2>Trust</h2>
+      <a href="/privacy/">Privacy</a>
+      <a href="/security/">Security</a>
+      <a href="/terms/">Terms</a>
+      <a href="/access/">People and agents</a>
+    </div>
+    <div class="footer-note">
+      <span class="pulse" aria-hidden="true"></span>
+      <p>No accounts or file uploads. Advertising may be provided by Google.</p>
+    </div>
+  </div>
+  <div class="shell footer-bottom">
+    <p>© {year} {SITE.name}</p>
+    <p>Each project keeps its own domain, product boundary, and privacy policy.</p>
+  </div>
+</footer>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Utilitas">
+  <rect width="64" height="64" rx="16" fill="#18201d"/>
+  <path d="M15 20h12v12H15z" fill="#eb6f52"/>
+  <circle cx="41" cy="26" r="7" fill="#f4c95d"/>
+  <path d="M20 43l10-8 10 8-10 8z" fill="#67a89c"/>
+</svg>

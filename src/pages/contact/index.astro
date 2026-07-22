@@ -1,0 +1,30 @@
+---
+import TrustLayout from '../../layouts/TrustLayout.astro';
+import { SITE } from '../../data/site';
+const title = 'Contact | Utilitas';
+const description = 'Where to send project feedback, accessibility reports, corrections, and security concerns for Utilitas tools.';
+---
+
+<TrustLayout title={title} description={description} path="/contact/" eyebrow="Get in touch">
+  <h2>Choose the closest route</h2>
+  <p>Feedback is easiest to evaluate when it reaches the project it concerns. Include the product name, affected URL, browser and device when relevant, what you expected, and what happened.</p>
+
+  <div class="contact-options">
+    <section>
+      <h3>SVG Vector Lab</h3>
+      <p>Use the project's maintained contact page for editor feedback, SVG problems, corrections, and accessibility reports.</p>
+      <a class="text-link" href="https://svgvectorlab.com/contact/">SVG Vector Lab contact <span aria-hidden="true">↗</span></a>
+    </section>
+    <section>
+      <h3>Utilitas and upcoming projects</h3>
+      <p>Use the public maintainer profile for repository questions and general project coordination. Do not post secrets or private files in a public issue.</p>
+      <a class="text-link" href={SITE.ownerUrl}>Maintainer on GitHub <span aria-hidden="true">↗</span></a>
+    </section>
+  </div>
+
+  <h2>Security and privacy reports</h2>
+  <p>For security concerns, look for private vulnerability reporting on the relevant repository or project security page before opening a public issue. For privacy questions, describe the affected site and data flow without including unnecessary personal information.</p>
+
+  <h2>No public intake form</h2>
+  <p>This hub deliberately avoids a contact form so it does not need to collect, store, or route message data. A verified dedicated address can be added later if the collection needs a private general-purpose contact channel.</p>
+</TrustLayout>

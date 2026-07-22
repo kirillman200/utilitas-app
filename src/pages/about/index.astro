@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'About | Utilitas';
+const description = 'Why Utilitas builds focused browser tools around practical outcomes, clear limits, and respectful data boundaries.';
+---
+
+<BaseLayout title={title} description={description} path="/about/">
+  <section class="page-hero about-hero">
+    <div class="shell page-hero-grid">
+      <div><p class="eyebrow">About Utilitas</p><h1>Software should earn its place</h1></div>
+      <p class="lede">Utilitas is a collection of browser-first tools built for real creative, planning, and privacy tasks.</p>
+    </div>
+  </section>
+  <section class="section-pad">
+    <div class="shell editorial-grid">
+      <div class="editorial-lead">
+        <p class="eyebrow">The idea</p>
+        <h2>Useful is a demanding standard</h2>
+      </div>
+      <div class="prose prose-wide">
+        <p>Utilitas takes its name from utility: fitness for a purpose. That is the test for every project in this collection. A product should help someone complete a meaningful task, explain the assumptions behind its result, and avoid creating a larger burden than the one it removes.</p>
+        <p>The projects are deliberately distinct. SVG Vector Lab is a vector editor. Project Quantity Lab is a material and cost planner. Photo Privacy Lab is a photo-sharing safety workflow. They share product principles and a technical foundation, but each keeps the domain, interface, documentation, and privacy language appropriate to its own work.</p>
+        <h2>How projects are built</h2>
+        <p>Whenever practical, computation happens in the browser. Static pages remain readable without a large application bundle. Interactive code is loaded only where it contributes to the task. Public claims are limited to features that exist and have been tested.</p>
+        <p>Trust is treated as product work. Important pages describe privacy, security, limitations, access, and contact routes. Search metadata, structured data, sitemaps, and agent-facing indexes are generated from the same route inventory so they are less likely to drift apart.</p>
+        <h2>What this hub is not</h2>
+        <p>This website is not an account dashboard, an API platform, a data broker, or a promise that every project has identical capabilities. It is the maintained directory and standards home for the collection. Individual project policies control the product-specific data and interactions on their own sites.</p>
+        <p><a class="button button-small" href="/projects/">Explore the projects <span aria-hidden="true">→</span></a></p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
