@@ -12,6 +12,8 @@ The editorial home for focused browser tools and practical Field Notes at `https
 
 ## Local development
 
+npm is the repository package manager. `package-lock.json` is the dependency source of truth, and production builds should use `npm ci`.
+
 ```powershell
 npm install
 npm run dev

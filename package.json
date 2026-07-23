@@ -3,6 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "npm@11.16.0",
   "description": "The main home for focused, privacy-conscious browser utilities from Utilitas.",
   "engines": {
     "node": ">=22.12.0"
