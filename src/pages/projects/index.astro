@@ -4,6 +4,11 @@ import { SITE, projects } from '../../data/site';
 
 const title = 'Projects | Utilitas';
 const description = 'Explore every live Utilitas browser tool for creating, planning, and protecting everyday work.';
+const liveProjectCount = projects.filter((project) => project.status === 'live').length;
+const projectStatus =
+  liveProjectCount === projects.length
+    ? `${liveProjectCount} live tools and room to grow`
+    : `${liveProjectCount} live, ${projects.length - liveProjectCount} in development`;
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -29,11 +34,11 @@ const schema = {
     <div class="shell registry-hero-grid">
       <div>
         <p class="kicker">Utilitas tool registry / Live index</p>
-        <h1>Three tools.<br />Three clear jobs.</h1>
+        <h1>Focused tools.<br />Clear jobs.</h1>
       </div>
       <div class="registry-intro">
         <p>Open the product that matches the work. Each tool has its own production domain, focused interface, and product-specific privacy boundary.</p>
-        <div class="registry-status"><span aria-hidden="true"></span> All listed tools are live</div>
+        <div class="registry-status"><span aria-hidden="true"></span> {projectStatus}</div>
       </div>
     </div>
   </section>

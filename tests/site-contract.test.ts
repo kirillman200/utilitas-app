@@ -108,6 +108,24 @@ describe('project catalogue contract', () => {
       expect(project.features.length, project.name).toBeGreaterThanOrEqual(4);
     }
   });
+
+  it('keeps the collection expandable and the public copy current', () => {
+    const homeSource = read(join(root, 'src', 'pages', 'index.astro'));
+    const headerSource = read(join(root, 'src', 'components', 'SiteHeader.astro'));
+    const projectsSource = read(join(root, 'src', 'pages', 'projects', 'index.astro'));
+    const home = read(outputFile('/'));
+    const security = read(outputFile('/security/'));
+
+    expect(homeSource).toContain("projects.filter((project) => project.status === 'live')");
+    expect(headerSource).toContain("projects.filter((project) => project.status === 'live')");
+    expect(projectsSource).not.toContain('Three tools');
+    expect(home).not.toContain('Independent browser tools from Toronto, Canada.');
+    expect(home).not.toContain('Advertising may be provided by Google.');
+    expect(security).toContain('The short version');
+    expect(security).toContain('Found something wrong?');
+    expect(security).not.toContain('Supported surface');
+    expect(security).not.toContain('Deployment boundary');
+  });
 });
 
 describe('Field Notes content contract', () => {

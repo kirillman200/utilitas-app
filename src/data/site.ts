@@ -5,7 +5,7 @@ export const SITE = {
   origin: 'https://utilitas.app',
   title: 'Utilitas | Practical browser tools and field-tested guides',
   description:
-    'Use focused browser tools and practical guides for SVG editing, project estimating, and photo privacy, with clear limits and data boundaries.',
+    'Use focused browser tools and practical guides for creative work, project planning, privacy, and other everyday tasks, with clear limits and data boundaries.',
   shortDescription: 'Practical tools. Clear methods. No account required.',
   locale: 'en_CA',
   ownerUrl: 'https://github.com/kirillman200',
@@ -117,7 +117,7 @@ const coreRoutes = [
   {
     path: '/security/',
     title: 'Security | Utilitas',
-    description: 'The Utilitas hub security boundary, deployment safeguards, and responsible reporting guidance.',
+    description: 'How the Utilitas hub is protected, what falls outside its control, and how to report a security problem safely.',
     kind: 'trust',
   },
   {

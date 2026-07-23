@@ -4,6 +4,10 @@ import ArticleRow from '../components/ArticleRow.astro';
 import { SITE, projects, absolute } from '../data/site';
 import { articles } from '../data/articles';
 
+const liveProjects = projects.filter((project) => project.status === 'live');
+const liveToolCount = String(liveProjects.length).padStart(2, '0');
+const fieldNoteCount = String(articles.length).padStart(2, '0');
+
 const schema = [
   {
     '@context': 'https://schema.org',
@@ -45,9 +49,9 @@ const schema = [
         <span>U</span><span>/</span><span>01</span>
       </div>
       <div class="hero-copy">
-        <p class="kicker">Independent browser utilities / Toronto, Canada</p>
+        <p class="kicker">Focused browser utilities / Direct access</p>
         <h1>Useful tools for work that <em>stays yours.</em></h1>
-        <p class="hero-lede">Create vector artwork, estimate project materials, and prepare photos for safer sharing. Each tool has one clear job, no required account, and a plain-language data boundary.</p>
+        <p class="hero-lede">Edit vectors, plan materials, protect photos, and take on more practical browser work as the collection grows. Each tool has one clear job, no required account, and a plain-language data boundary.</p>
         <div class="hero-actions">
           <a class="button" href="/projects/">Open the tool index <span aria-hidden="true">&rarr;</span></a>
           <a class="text-link" href="/articles/">Read Field Notes <span aria-hidden="true">&rarr;</span></a>
@@ -68,11 +72,11 @@ const schema = [
   <section class="tool-index section-pad">
     <div class="shell">
       <div class="section-heading">
-        <div><p class="kicker">Tool index / 03 live</p><h2>Choose the work,<br />then enter the tool.</h2></div>
+        <div><p class="kicker">Tool index / {liveToolCount} live</p><h2>Choose the work,<br />then enter the tool.</h2></div>
         <p>These are separate products, not skins of the same app. Each keeps the interface, documentation, and privacy language needed for its specific job.</p>
       </div>
       <div class="tool-ledger">
-        {projects.map((project, index) => (
+        {liveProjects.map((project, index) => (
           <article class={`tool-ledger-row accent-${project.accent}`}>
             <p class="ledger-number">{String(index + 1).padStart(2, '0')}</p>
             <div class="ledger-name">
@@ -100,8 +104,8 @@ const schema = [
         <a class="text-link inverse" href="/about/">Read the operating principles <span aria-hidden="true">&rarr;</span></a>
       </div>
       <div class="statement-metrics" aria-label="Utilitas collection facts">
-        <div><strong>03</strong><span>live tools</span></div>
-        <div><strong>06</strong><span>field notes</span></div>
+        <div><strong>{liveToolCount}</strong><span>live tools</span></div>
+        <div><strong>{fieldNoteCount}</strong><span>field notes</span></div>
         <div><strong>00</strong><span>accounts required</span></div>
       </div>
     </div>

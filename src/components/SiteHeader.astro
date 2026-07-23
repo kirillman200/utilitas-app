@@ -1,7 +1,8 @@
 ---
-import { SITE } from '../data/site';
+import { SITE, projects } from '../data/site';
 
 const pathname = Astro.url.pathname;
+const liveToolCount = projects.filter((project) => project.status === 'live').length;
 const links = [
   { href: '/projects/', label: 'Tools' },
   { href: '/articles/', label: 'Field Notes' },
@@ -19,7 +20,7 @@ const isCurrent = (href: string) => pathname === href || (href !== '/' && pathna
     </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
       {links.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
-      <a class="nav-index" href="/projects/">03 live <span aria-hidden="true">&nearr;</span></a>
+      <a class="nav-index" href="/projects/">{liveToolCount} live <span aria-hidden="true">&nearr;</span></a>
     </nav>
     <details class="mobile-menu">
       <summary aria-label="Open navigation"><span></span><span></span><span></span></summary>
