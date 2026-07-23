@@ -20,7 +20,7 @@ The public surface includes:
 - Field Notes hub and six original guides
 - About, privacy, terms, security, access, and contact pages
 - A real noindex 404 page
-- `robots.txt`, `sitemap.xml`, `llms.txt`, `ads.txt`, icons, and the social preview image
+- `robots.txt`, `sitemap.xml`, `llms.txt`, `ads.txt`, `/.well-known/security.txt`, icons, and the social preview image
 
 ## Data and third parties
 
@@ -54,7 +54,7 @@ After a real deployment, verify:
 1. The canonical HTTPS origin and custom domain.
 2. Status `200` for representative routes and status `404` for a missing route.
 3. The live Content Security Policy and other security headers.
-4. `robots.txt`, `sitemap.xml`, `llms.txt`, `ads.txt`, and the social preview image.
+4. `robots.txt`, `sitemap.xml`, `llms.txt`, `ads.txt`, `/.well-known/security.txt`, and the social preview image.
 5. A homepage, tool index, Field Note hub, and individual article on mobile and desktop.
 6. Google consent behavior for every region in which advertising is served.
 7. Search Console ownership and sitemap submission.

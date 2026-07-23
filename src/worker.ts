@@ -16,14 +16,19 @@ export function canonicalRedirectUrl(requestUrl: string) {
   const url = new URL(requestUrl);
   const isCanonicalHost = url.hostname === CANONICAL_HOSTNAME;
   const isWwwHost = url.hostname === `www.${CANONICAL_HOSTNAME}`;
+  const isLegacySecurityTxt = url.pathname === '/security.txt';
 
-  if ((!isCanonicalHost && !isWwwHost) || (isCanonicalHost && url.protocol === 'https:')) {
+  if (
+    (!isCanonicalHost && !isWwwHost) ||
+    (isCanonicalHost && url.protocol === 'https:' && !isLegacySecurityTxt)
+  ) {
     return null;
   }
 
   url.protocol = 'https:';
   url.hostname = CANONICAL_HOSTNAME;
   url.port = '';
+  if (isLegacySecurityTxt) url.pathname = '/.well-known/security.txt';
   return url.toString();
 }
 
@@ -76,6 +81,10 @@ export default {
     applySecurityHeaders(headers);
     if (url.pathname.startsWith('/_astro/')) {
       headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+    if (url.pathname === '/.well-known/security.txt') {
+      headers.set('Content-Type', 'text/plain; charset=utf-8');
+      headers.set('Cache-Control', 'public, max-age=3600');
     }
     if (url.hostname.endsWith('.workers.dev')) {
       headers.set('X-Robots-Tag', 'noindex, nofollow');

@@ -25,6 +25,15 @@ describe('worker canonical redirects', () => {
     );
   });
 
+  it('redirects the legacy security.txt path to the canonical well-known path', () => {
+    expect(canonicalRedirectUrl('https://utilitas.app/security.txt')).toBe(
+      'https://utilitas.app/.well-known/security.txt',
+    );
+    expect(canonicalRedirectUrl('http://www.utilitas.app/security.txt')).toBe(
+      'https://utilitas.app/.well-known/security.txt',
+    );
+  });
+
   it('leaves the canonical HTTPS origin and unrelated development hosts unchanged', () => {
     expect(canonicalRedirectUrl('https://utilitas.app/')).toBeNull();
     expect(canonicalRedirectUrl('http://localhost:4321/')).toBeNull();

@@ -56,7 +56,13 @@ describe('public route contract', () => {
 
   it('keeps internal page links inside the built public surface', () => {
     const publicPaths = new Set(publicRoutes.map((route) => route.path));
-    const utilityPaths = new Set(['/robots.txt', '/sitemap.xml', '/llms.txt', '/ads.txt']);
+    const utilityPaths = new Set([
+      '/robots.txt',
+      '/sitemap.xml',
+      '/llms.txt',
+      '/ads.txt',
+      '/.well-known/security.txt',
+    ]);
 
     for (const route of publicRoutes) {
       const html = read(outputFile(route.path));
@@ -193,6 +199,30 @@ describe('crawler and machine-readable contract', () => {
 });
 
 describe('security, privacy, and deploy boundary', () => {
+  it('publishes a current RFC 9116 security contact file', () => {
+    const securityTxtPath = join(dist, '.well-known', 'security.txt');
+    expect(existsSync(securityTxtPath)).toBe(true);
+
+    const securityTxt = read(securityTxtPath);
+    const expires = securityTxt.match(/^Expires:\s*(.+)$/m)?.[1];
+
+    expect(securityTxt).toContain('Contact: https://github.com/kirillman200');
+    expect(securityTxt).toContain('Contact: https://utilitas.app/contact/');
+    expect(securityTxt).toContain(
+      'Canonical: https://utilitas.app/.well-known/security.txt',
+    );
+    expect(securityTxt).toContain('Policy: https://utilitas.app/security/');
+    expect(securityTxt).toContain('Preferred-Languages: en');
+    expect(expires).toBeDefined();
+    expect(Date.parse(expires as string)).toBeGreaterThan(
+      Date.now() + 30 * 24 * 60 * 60 * 1000,
+    );
+
+    const worker = read(join(root, 'src', 'worker.ts'));
+    expect(worker).toContain("url.pathname === '/.well-known/security.txt'");
+    expect(worker).toContain("'text/plain; charset=utf-8'");
+  });
+
   it('ships the required security headers', () => {
     const worker = read(join(root, 'src', 'worker.ts'));
     for (const name of [
