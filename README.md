@@ -51,4 +51,4 @@ Only `dist/` is exposed as static assets. Wrangler also bundles `src/worker.ts` 
 npm run deploy
 ```
 
-A successful local build is not a deployment. After release, verify canonical URLs, the custom 404 status, response headers, `robots.txt`, `sitemap.xml`, `llms.txt`, the custom domain, and the `workers.dev` noindex header.
+A successful local build is not a deployment. After release, verify canonical URLs, the custom 404 status, response headers, `robots.txt`, `sitemap.xml`, `llms.txt`, the custom domain, and that the public `workers.dev` and preview routes remain disabled.

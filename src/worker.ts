@@ -10,6 +10,23 @@ const SECURITY_HEADERS = {
   'X-XSS-Protection': '0',
 } as const;
 
+const CANONICAL_HOSTNAME = 'utilitas.app';
+
+export function canonicalRedirectUrl(requestUrl: string) {
+  const url = new URL(requestUrl);
+  const isCanonicalHost = url.hostname === CANONICAL_HOSTNAME;
+  const isWwwHost = url.hostname === `www.${CANONICAL_HOSTNAME}`;
+
+  if ((!isCanonicalHost && !isWwwHost) || (isCanonicalHost && url.protocol === 'https:')) {
+    return null;
+  }
+
+  url.protocol = 'https:';
+  url.hostname = CANONICAL_HOSTNAME;
+  url.port = '';
+  return url.toString();
+}
+
 function createNonce() {
   const bytes = crypto.getRandomValues(new Uint8Array(18));
   let binary = '';
@@ -41,9 +58,20 @@ function applySecurityHeaders(headers: Headers) {
 
 export default {
   async fetch(request, env): Promise<Response> {
+    const url = new URL(request.url);
+    const canonicalUrl = canonicalRedirectUrl(url.toString());
+
+    if (canonicalUrl) {
+      const headers = new Headers({
+        'Cache-Control': 'public, max-age=3600',
+        Location: canonicalUrl,
+      });
+      applySecurityHeaders(headers);
+      return new Response(null, { status: 308, headers });
+    }
+
     const response = await env.ASSETS.fetch(request);
     const headers = new Headers(response.headers);
-    const url = new URL(request.url);
 
     applySecurityHeaders(headers);
     if (url.pathname.startsWith('/_astro/')) {

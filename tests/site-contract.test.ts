@@ -192,6 +192,8 @@ describe('security, privacy, and deploy boundary', () => {
 
     const config = read(join(root, 'wrangler.jsonc'));
     expect(config).toContain('"main": "./src/worker.ts"');
+    expect(config).toContain('"workers_dev": false');
+    expect(config).toContain('"preview_urls": false');
     expect(config).toContain('"binding": "ASSETS"');
     expect(config).toContain('"run_worker_first": true');
   });
