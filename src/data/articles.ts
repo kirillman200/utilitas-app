@@ -17,7 +17,11 @@ export interface ArticleDefinition {
   intro: string;
   sections: ArticleSection[];
   takeaways: string[];
-  relatedProject?: 'svg-vector-lab' | 'project-quantity-lab' | 'photo-privacy-lab';
+  relatedProject?:
+    | 'svg-vector-lab'
+    | 'project-quantity-lab'
+    | 'photo-privacy-lab'
+    | 'mortgage-compass';
 }
 
 export const articles: ArticleDefinition[] = [

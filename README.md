@@ -38,6 +38,7 @@ The live project subdomains are:
 
 - Project Quantity Lab: `https://home.utilitas.app/`
 - Photo Privacy Lab: `https://exif.utilitas.app/`
+- Mortgage Compass: `https://mortgage.utilitas.app/`
 
 ## Privacy and AI access
 

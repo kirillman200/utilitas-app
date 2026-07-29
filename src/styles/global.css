@@ -9,6 +9,7 @@
   --signal: #d8ff3e;
   --orange: #ff6335;
   --blue: #4b70ff;
+  --gold: #d8a21b;
   --cyan: #81ddda;
   --sans: Arial, Helvetica, sans-serif;
   --display: "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
@@ -518,6 +519,10 @@ code {
 
 .tool-ledger-row.accent-green::before {
   background: var(--cyan);
+}
+
+.tool-ledger-row.accent-gold::before {
+  background: var(--gold);
 }
 
 .tool-ledger-row:hover {
@@ -1073,6 +1078,10 @@ code {
 
 .registry-entry.registry-green {
   background: #e2f3ef;
+}
+
+.registry-entry.registry-gold {
+  background: #f6edcf;
 }
 
 .registry-entry-grid {

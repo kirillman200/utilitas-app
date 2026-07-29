@@ -6,14 +6,14 @@ export const SITE = {
   contactEmail: 'contact@utilitas.app',
   title: 'Utilitas | Practical browser tools and field-tested guides',
   description:
-    'Use focused browser tools and practical guides for creative work, project planning, privacy, and other everyday tasks, with clear limits and data boundaries.',
+    'Use focused browser tools and practical guides for creative work, home and financial planning, privacy, and other everyday tasks, with clear limits and data boundaries.',
   shortDescription: 'Practical tools. Clear methods. No account required.',
   locale: 'en_CA',
   ownerUrl: 'https://github.com/kirillman200',
 } as const;
 
 export type ProjectStatus = 'live' | 'in-development';
-export type ProjectCategory = 'create' | 'plan' | 'protect';
+export type ProjectCategory = 'create' | 'plan' | 'finance' | 'protect';
 
 export interface ProjectDefinition {
   slug: string;
@@ -26,7 +26,7 @@ export interface ProjectDefinition {
   domainLabel?: string;
   features: string[];
   privacy: string;
-  accent: 'coral' | 'blue' | 'green';
+  accent: 'coral' | 'blue' | 'gold' | 'green';
   monogram: string;
 }
 
@@ -76,6 +76,27 @@ export const projects: ProjectDefinition[] = [
     accent: 'green',
     monogram: 'PP',
   },
+  {
+    slug: 'mortgage-compass',
+    name: 'Mortgage Compass',
+    eyebrow: 'Plan a mortgage',
+    description:
+      'Model mortgage payments, affordability, payoff plans, refinancing, closing costs, rate stress, and rent-versus-buy decisions.',
+    category: 'finance',
+    status: 'live',
+    url: 'https://mortgage.utilitas.app/',
+    domainLabel: 'mortgage.utilitas.app',
+    features: [
+      'Payment and affordability models',
+      'Payoff and refinance comparisons',
+      'Rent-versus-buy analysis',
+      'Current Canadian housing signals',
+    ],
+    privacy:
+      'Calculator inputs stay in your browser. Housing dashboards request public market data without sending your mortgage inputs.',
+    accent: 'gold',
+    monogram: 'MC',
+  },
 ];
 
 const coreRoutes = [
@@ -88,7 +109,7 @@ const coreRoutes = [
   {
     path: '/projects/',
     title: 'Projects | Utilitas',
-    description: 'Explore every live Utilitas browser tool for creating, planning, and protecting everyday work.',
+    description: 'Explore every live Utilitas browser tool for creating, planning, comparing, and protecting everyday work.',
     kind: 'projects',
   },
   {

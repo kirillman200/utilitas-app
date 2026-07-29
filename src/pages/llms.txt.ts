@@ -20,7 +20,7 @@ export const GET: APIRoute = () => {
     '',
     ...projectLines,
     '',
-    'SVG Vector Lab remains at https://svgvectorlab.com/. Project Quantity Lab is live at https://home.utilitas.app/. Photo Privacy Lab is live at https://exif.utilitas.app/.',
+    'SVG Vector Lab remains at https://svgvectorlab.com/. Project Quantity Lab is live at https://home.utilitas.app/. Photo Privacy Lab is live at https://exif.utilitas.app/. Mortgage Compass is live at https://mortgage.utilitas.app/.',
     '',
     '## Field Notes',
     '',

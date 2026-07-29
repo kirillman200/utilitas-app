@@ -86,6 +86,7 @@ describe('project catalogue contract', () => {
   it('publishes every project as live at its assigned production domain', () => {
     const home = projects.find((project) => project.slug === 'project-quantity-lab');
     const exif = projects.find((project) => project.slug === 'photo-privacy-lab');
+    const mortgage = projects.find((project) => project.slug === 'mortgage-compass');
 
     expect(home).toMatchObject({
       status: 'live',
@@ -97,14 +98,21 @@ describe('project catalogue contract', () => {
       url: 'https://exif.utilitas.app/',
       domainLabel: 'exif.utilitas.app',
     });
+    expect(mortgage).toMatchObject({
+      status: 'live',
+      url: 'https://mortgage.utilitas.app/',
+      domainLabel: 'mortgage.utilitas.app',
+    });
     expect(projects.every((project) => project.status === 'live')).toBe(true);
 
     for (const path of ['/', '/projects/']) {
       const html = read(outputFile(path));
       expect(html).toContain('home.utilitas.app');
       expect(html).toContain('exif.utilitas.app');
+      expect(html).toContain('mortgage.utilitas.app');
       expect(html).toContain('href="https://home.utilitas.app/"');
       expect(html).toContain('href="https://exif.utilitas.app/"');
+      expect(html).toContain('href="https://mortgage.utilitas.app/"');
     }
   });
 
@@ -203,6 +211,7 @@ describe('crawler and machine-readable contract', () => {
     expect(llms).toContain('SVG Vector Lab remains at https://svgvectorlab.com/');
     expect(llms).toContain('Project Quantity Lab is live at https://home.utilitas.app/');
     expect(llms).toContain('Photo Privacy Lab is live at https://exif.utilitas.app/');
+    expect(llms).toContain('Mortgage Compass is live at https://mortgage.utilitas.app/');
   });
 
   it('publishes a valid Agent Skills discovery index with a matching digest', () => {
@@ -254,7 +263,7 @@ describe('security, privacy, and deploy boundary', () => {
     expect(worker).toContain("'text/plain; charset=utf-8'");
   });
 
-  it('publishes dedicated mail links for every non-SVG project', () => {
+  it('publishes a maintained contact route for every project', () => {
     const contact = read(outputFile('/contact/'));
     const footer = read(outputFile('/'));
     expect(footer).toContain('href="mailto:contact@utilitas.app"');
@@ -266,6 +275,8 @@ describe('security, privacy, and deploy boundary', () => {
       expect(contact).toContain(`href="mailto:${email}"`);
       expect(contact).toContain(email);
     }
+    expect(contact).toContain('Mortgage Compass');
+    expect(contact).toContain('Do not include personal financial information.');
   });
 
   it('ships the required security headers', () => {
