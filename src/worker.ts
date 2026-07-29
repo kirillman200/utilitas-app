@@ -1,3 +1,11 @@
+import {
+  CONTENT_SIGNAL,
+  HOMEPAGE_DISCOVERY_LINKS,
+  acceptsMarkdown,
+  appendVary,
+  createMarkdownResponse,
+} from './agent-discovery';
+
 const SECURITY_HEADERS = {
   'Cross-Origin-Opener-Policy': 'same-origin',
   'Cross-Origin-Resource-Policy': 'same-origin',
@@ -79,12 +87,19 @@ export default {
     const headers = new Headers(response.headers);
 
     applySecurityHeaders(headers);
+    headers.set('Content-Signal', CONTENT_SIGNAL);
+    if (url.pathname === '/' || url.pathname === '/index.html') {
+      headers.set('Link', HOMEPAGE_DISCOVERY_LINKS);
+    }
     if (url.pathname.startsWith('/_astro/')) {
       headers.set('Cache-Control', 'public, max-age=31536000, immutable');
     }
     if (url.pathname === '/.well-known/security.txt') {
       headers.set('Content-Type', 'text/plain; charset=utf-8');
       headers.set('Cache-Control', 'public, max-age=3600');
+    }
+    if (url.pathname.endsWith('.md')) {
+      headers.set('Content-Type', 'text/markdown; charset=utf-8');
     }
     if (url.hostname.endsWith('.workers.dev')) {
       headers.set('X-Robots-Tag', 'noindex, nofollow');
@@ -97,6 +112,11 @@ export default {
         statusText: response.statusText,
         headers,
       });
+    }
+
+    appendVary(headers, 'Accept');
+    if (acceptsMarkdown(request.headers.get('Accept') || '')) {
+      return createMarkdownResponse(response, headers, await response.text(), request.method);
     }
 
     const nonce = createNonce();

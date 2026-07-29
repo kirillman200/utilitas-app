@@ -1,4 +1,5 @@
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { articlePath, articles } from '../src/data/articles';
@@ -181,9 +182,16 @@ describe('crawler and machine-readable contract', () => {
 
   it('separates AI search access from model-training access', () => {
     const robots = read(join(dist, 'robots.txt'));
-    expect(robots).toContain('User-agent: OAI-SearchBot\nAllow: /');
-    expect(robots).toContain('User-agent: ChatGPT-User\nAllow: /');
-    expect(robots).toContain('User-agent: GPTBot\nDisallow: /');
+    expect(robots).toContain('Content-Signal: ai-train=no, search=yes, ai-input=yes');
+    expect(robots).toContain(
+      'User-agent: OAI-SearchBot\nContent-Signal: ai-train=no, search=yes, ai-input=yes\nAllow: /',
+    );
+    expect(robots).toContain(
+      'User-agent: ChatGPT-User\nContent-Signal: ai-train=no, search=yes, ai-input=yes\nAllow: /',
+    );
+    expect(robots).toContain(
+      'User-agent: GPTBot\nContent-Signal: ai-train=no, search=yes, ai-input=yes\nDisallow: /',
+    );
     expect(robots).toContain(`Sitemap: ${SITE.origin}/sitemap.xml`);
   });
 
@@ -196,6 +204,27 @@ describe('crawler and machine-readable contract', () => {
     expect(llms).toContain('Project Quantity Lab is live at https://home.utilitas.app/');
     expect(llms).toContain('Photo Privacy Lab is live at https://exif.utilitas.app/');
   });
+
+  it('publishes a valid Agent Skills discovery index with a matching digest', () => {
+    const index = JSON.parse(read(join(dist, '.well-known', 'agent-skills', 'index.json')));
+    expect(index.$schema).toBe('https://schemas.agentskills.io/discovery/0.2.0/schema.json');
+    expect(index.skills).toHaveLength(1);
+    const skill = index.skills[0];
+    expect(skill).toMatchObject({
+      name: 'utilitas-project-catalog',
+      type: 'skill-md',
+      url: 'https://utilitas.app/.well-known/agent-skills/utilitas-project-catalog/SKILL.md',
+    });
+    const skillPath = join(
+      dist,
+      '.well-known',
+      'agent-skills',
+      'utilitas-project-catalog',
+      'SKILL.md',
+    );
+    const digest = createHash('sha256').update(readFileSync(skillPath)).digest('hex');
+    expect(skill.digest).toBe(`sha256:${digest}`);
+  });
 });
 
 describe('security, privacy, and deploy boundary', () => {
@@ -206,6 +235,8 @@ describe('security, privacy, and deploy boundary', () => {
     const securityTxt = read(securityTxtPath);
     const expires = securityTxt.match(/^Expires:\s*(.+)$/m)?.[1];
 
+    expect(SITE.contactEmail).toBe('contact@utilitas.app');
+    expect(securityTxt).toContain('Contact: mailto:contact@utilitas.app');
     expect(securityTxt).toContain('Contact: https://github.com/kirillman200');
     expect(securityTxt).toContain('Contact: https://utilitas.app/contact/');
     expect(securityTxt).toContain(
@@ -221,6 +252,20 @@ describe('security, privacy, and deploy boundary', () => {
     const worker = read(join(root, 'src', 'worker.ts'));
     expect(worker).toContain("url.pathname === '/.well-known/security.txt'");
     expect(worker).toContain("'text/plain; charset=utf-8'");
+  });
+
+  it('publishes dedicated mail links for every non-SVG project', () => {
+    const contact = read(outputFile('/contact/'));
+    const footer = read(outputFile('/'));
+    expect(footer).toContain('href="mailto:contact@utilitas.app"');
+    for (const email of [
+      'contact@utilitas.app',
+      'contact@home.utilitas.app',
+      'contact@exif.utilitas.app',
+    ]) {
+      expect(contact).toContain(`href="mailto:${email}"`);
+      expect(contact).toContain(email);
+    }
   });
 
   it('ships the required security headers', () => {

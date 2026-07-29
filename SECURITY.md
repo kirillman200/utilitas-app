@@ -6,7 +6,7 @@ Security reports are accepted for the public Utilitas hub and its deployment con
 
 ## Reporting
 
-Use private vulnerability reporting on the relevant GitHub repository when available. Include the affected URL, impact, reproducible steps, and a minimal proof. Do not include secrets or private user data in public issues.
+Email [contact@utilitas.app](mailto:contact@utilitas.app) or use private vulnerability reporting on the relevant GitHub repository when available. Include the affected URL, impact, reproducible steps, and a minimal proof. Do not include secrets or private user data in public issues.
 
 Do not degrade service, access data that is not yours, perform broad automated scanning, or publish an uncorrected vulnerability.
 

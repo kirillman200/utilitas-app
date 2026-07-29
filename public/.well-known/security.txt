@@ -1,3 +1,4 @@
+Contact: mailto:contact@utilitas.app
 Contact: https://github.com/kirillman200
 Contact: https://utilitas.app/contact/
 Expires: 2027-07-01T00:00:00Z

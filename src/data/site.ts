@@ -3,6 +3,7 @@ import { articlePath, articles } from './articles';
 export const SITE = {
   name: 'Utilitas',
   origin: 'https://utilitas.app',
+  contactEmail: 'contact@utilitas.app',
   title: 'Utilitas | Practical browser tools and field-tested guides',
   description:
     'Use focused browser tools and practical guides for creative work, project planning, privacy, and other everyday tasks, with clear limits and data boundaries.',

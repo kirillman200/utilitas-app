@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "utilitas-project-catalog",
+      "type": "skill-md",
+      "description": "Find the appropriate Utilitas browser tool and its public guidance while preserving each project's separate domain and limits.",
+      "url": "https://utilitas.app/.well-known/agent-skills/utilitas-project-catalog/SKILL.md",
+      "digest": "sha256:970eb536ec80010af9a455280dee6e7a0e313b59d00214a0939525866bd76a06"
+    }
+  ]
+}

@@ -15,10 +15,13 @@
     "astro": "astro",
     "check": "astro check && tsc --noEmit",
     "test": "npm run test:site",
-    "test:site": "vitest run tests/site-contract.test.ts tests/worker.test.ts",
+    "test:site": "vitest run tests/site-contract.test.ts tests/worker.test.ts tests/indexnow.test.ts",
     "validate": "npm run check && npm run build && npm run test:site",
     "deploy:dry": "npm run validate && wrangler deploy --dry-run",
-    "deploy": "npm run validate && wrangler deploy"
+    "deploy": "npm run validate && wrangler deploy",
+    "postdeploy": "npm run indexnow:submit",
+    "indexnow:preview": "node scripts/submit-indexnow.mjs",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs --send"
   },
   "dependencies": {
     "@astrojs/vue": "^7.0.1",
