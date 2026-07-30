@@ -490,7 +490,7 @@ code {
 .tool-ledger-row {
   position: relative;
   display: grid;
-  grid-template-columns: 64px minmax(190px, 0.75fr) minmax(280px, 1.25fr) minmax(170px, 0.55fr);
+  grid-template-columns: 64px minmax(210px, 0.82fr) minmax(280px, 1.18fr) minmax(170px, 0.55fr);
   gap: 1.5rem;
   align-items: center;
   padding: 2rem 1.25rem;
@@ -548,8 +548,16 @@ code {
 }
 
 .ledger-name h3 {
-  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-size: clamp(2rem, 3.1vw, 3.5rem);
   text-transform: uppercase;
+}
+
+.ledger-name,
+.ledger-description,
+.registry-main,
+.registry-spec,
+.registry-boundary {
+  min-width: 0;
 }
 
 .ledger-description {
@@ -1087,7 +1095,7 @@ code {
 .registry-entry-grid {
   display: grid;
   grid-template-columns: 100px minmax(300px, 1fr) minmax(220px, 0.58fr) minmax(220px, 0.58fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(2rem, 3vw, 3rem);
 }
 
 .registry-id {
@@ -1107,7 +1115,7 @@ code {
 
 .registry-main h2 {
   margin-bottom: 1.5rem;
-  font-size: clamp(3.2rem, 6vw, 6rem);
+  font-size: clamp(3.2rem, 5vw, 4.75rem);
 }
 
 .registry-main > p:not(.kicker) {
