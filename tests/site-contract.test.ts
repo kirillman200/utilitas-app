@@ -325,6 +325,17 @@ describe('security, privacy, and deploy boundary', () => {
     expect(privacy).toContain('cookies or similar technologies');
   });
 
+  it('installs the site-specific consent-gated GA4 stream', () => {
+    const homepage = read(outputFile('/'));
+    const analytics = read(join(dist, 'js', 'analytics.js'));
+    expect(homepage).toContain('name="google-analytics-id" content="G-FEXQ1TD4Z4"');
+    expect(homepage).toContain('data-analytics-consent');
+    expect(homepage).toContain('src="/js/analytics.js"');
+    expect(analytics).toContain('navigator.globalPrivacyControl === true');
+    expect(analytics).toContain('window.location.origin + window.location.pathname');
+    expect(analytics).not.toContain('window.location.search');
+  });
+
   it('publishes required icons and social image', () => {
     for (const path of [
       'favicon.svg',

@@ -42,7 +42,7 @@ The live project subdomains are:
 
 ## Privacy and AI access
 
-The hub has no accounts, forms, behavioural analytics, uploads, public API, MCP server, or agent write actions. It includes the approved Google AdSense loader and publisher metadata. Google advertising may use cookies or similar technologies according to consent choices and regional requirements. `robots.txt` allows normal crawling, OAI-SearchBot, and user-requested ChatGPT access while disallowing GPTBot model-training access by default. `llms.txt` is a concise discovery aid, not an authorization mechanism.
+The hub has no accounts, forms, uploads, public API, MCP server, or agent write actions. Its Google Analytics 4 property loads only after explicit consent, honors Global Privacy Control, and receives query-free page views rather than tool inputs. It also includes the approved Google AdSense loader and publisher metadata. Google advertising may use cookies or similar technologies according to consent choices and regional requirements. `robots.txt` allows normal crawling, OAI-SearchBot, and user-requested ChatGPT access while disallowing GPTBot model-training access by default. `llms.txt` is a concise discovery aid, not an authorization mechanism.
 
 AdSense runs under a nonce-based strict CSP applied by `src/worker.ts`. Before serving personalised ads in the EEA, United Kingdom, or Switzerland, configure Google Privacy & messaging or another Google-certified CMP integrated with the IAB TCF.
 
