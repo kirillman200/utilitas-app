@@ -17,6 +17,7 @@ export interface ArticleDefinition {
   intro: string;
   sections: ArticleSection[];
   takeaways: string[];
+  sources?: Array<{ label: string; href: string }>;
   relatedProject?:
     | 'svg-vector-lab'
     | 'project-quantity-lab'
@@ -347,6 +348,82 @@ export const articles: ArticleDefinition[] = [
       'Define the work and measure areas before choosing products.',
       'Show calculated need and rounded purchase quantity separately.',
       'Date prices and confirm specifications before buying.',
+    ],
+    relatedProject: 'project-quantity-lab',
+  },
+  {
+    slug: 'how-to-check-an-online-calculator-result',
+    title: 'How to check an online calculator result before you act on it',
+    shortTitle: 'Check an online calculator result',
+    description:
+      'A practical method for checking units, assumptions, rough magnitude, rounding, and real-world constraints before using an online calculation.',
+    topic: 'Principles',
+    readTime: '9 min read',
+    published: '2026-08-25',
+    updated: '2026-08-25',
+    intro:
+      'A calculator can perform arithmetic correctly and still give you the wrong decision. The inputs may use the wrong units, an assumption may not fit the job, or a precise-looking output may hide measurement uncertainty. Before buying materials, comparing a mortgage, or changing a file, check the result in a way another person could reproduce.',
+    sections: [
+      {
+        heading: 'Restate the question in plain language',
+        paragraphs: [
+          'Write down what the result is supposed to represent. Is it litres of paint before waste, whole boxes to purchase, a monthly payment under one rate, or pixels after scaling? A label such as total can hide important boundaries unless the numerator, denominator, time period, and exclusions are clear.',
+          'Confirm that the tool actually models the decision you need. A mortgage payment calculator does not automatically include property tax, insurance, fees, or a renewal-rate scenario. A material calculator cannot know product coverage, local code, site condition, or installation method unless those facts appear as inputs.',
+        ],
+        bullets: [
+          'Name the quantity and its unit.',
+          'Identify the time period or physical scope.',
+          'List costs, areas, or behaviours the model excludes.',
+          'Choose the decision the result will support.',
+        ],
+      },
+      {
+        heading: 'Audit every input and unit',
+        paragraphs: [
+          'Trace each number to a measurement, contract, label, or current quote. Keep feet and inches, metres and centimetres, percentages and decimals, monthly and annual rates, or CSS pixels and SVG user units from being mixed inside one calculation. Convert at a named boundary and retain the original value.',
+          'Use actual product dimensions and coverage where available. Nominal lumber sizes, package labels, lender conventions, and image coordinate systems can differ from the number a familiar name suggests. Record the date for prices, rates, and product specifications that can change.',
+        ],
+      },
+      {
+        heading: 'Make a rough estimate before trusting precision',
+        paragraphs: [
+          'Round the inputs enough to predict the order of magnitude. If a room is about 10 by 12 feet, the floor area should be near 120 square feet, not 12 or 1,200. The Open University recommends using a rough estimate as a check because a misplaced decimal can still produce a polished calculator display.',
+          'A rough check is not the final answer. Its job is to catch a wrong unit, sign, scale, or field. If the precise result and rough result disagree substantially, stop and inspect the inputs before adjusting the estimate to make them match.',
+        ],
+        note: 'Predict a plausible range before reading the output. This reduces the chance that visual precision will substitute for judgment.',
+      },
+      {
+        heading: 'Separate measured need from purchase rounding',
+        paragraphs: [
+          'Keep the calculated requirement visible before rounding. Then show the rule that turns it into a purchase or action quantity. A need of 8.2 boxes becomes 9 whole boxes, while a computed mortgage payment should stay in dollars and cents without implying that every future payment is certain.',
+          'Add waste, contingency, fees, or uncertainty as named lines rather than quietly inflating an input. That makes it possible to revise one assumption without rebuilding the entire result and prevents the buffer from being counted twice.',
+        ],
+      },
+      {
+        heading: 'Test the assumptions that could change the decision',
+        paragraphs: [
+          'Run a base case and at least one reasonable higher and lower case for the most uncertain input. For materials, test waste or coverage. For borrowing, test rate, fees, and holding period. For vector work, test viewBox, target size, and export scale. Focus on variables that can reverse the choice, not every field equally.',
+          'When a small change produces a large decision change, the result is sensitive. Collect better input evidence or preserve a larger margin before acting. A stable result remains useful across a reasonable range instead of depending on one optimistic value.',
+        ],
+      },
+      {
+        heading: 'Save a result another person can reproduce',
+        paragraphs: [
+          'Record the calculator name, input values, units, assumptions, output, date, and any linked source. A shareable URL or local save is helpful only if it excludes sensitive data and still exposes the assumptions needed to understand the result.',
+          'Finally, compare the plan with the authoritative source that governs the real action: the product label, signed contract, manufacturer instructions, current official guidance, property survey, or qualified professional. The calculator organizes a decision. It does not replace the evidence that the decision depends on.',
+        ],
+      },
+    ],
+    takeaways: [
+      'Name the exact quantity, scope, and unit before entering numbers.',
+      'Use a rough estimate to catch scale and decimal errors.',
+      'Show rounding, waste, and uncertainty as explicit steps.',
+      'Stress-test the input most likely to reverse the decision.',
+      'Confirm the final plan against the controlling source or requirement.',
+    ],
+    sources: [
+      { label: 'Open University: use rough estimation as a calculator check', href: 'https://www.open.edu/openlearn/science-maths-technology/mathematics-statistics/rounding-and-estimation/content-section-3.4' },
+      { label: 'NIST: guidance on measurement results and uncertainty', href: 'https://www.nist.gov/pml/nist-technical-note-1297' },
     ],
     relatedProject: 'project-quantity-lab',
   },

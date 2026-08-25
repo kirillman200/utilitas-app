@@ -87,6 +87,14 @@ const schema = [
           <ol>{article.takeaways.map((takeaway) => <li>{takeaway}</li>)}</ol>
         </section>
 
+        {article.sources && article.sources.length > 0 && (
+          <section aria-labelledby="sources-title">
+            <p class="section-number">Sources</p>
+            <h2 id="sources-title">Sources and further reading</h2>
+            <ul>{article.sources.map((source) => <li><a href={source.href} rel="external">{source.label}</a></li>)}</ul>
+          </section>
+        )}
+
         {project && project.url && (
           <aside class="article-tool-link">
             <div>
