@@ -27,6 +27,80 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+  "slug": "back-up-browser-saved-work",
+  "title": "How to back up work saved in a browser tool",
+  "shortTitle": "Back up browser-saved work",
+  "description": "Keep useful work beyond one browser profile: distinguish autosave from exports, verify downloaded files and preserve the assumptions behind saved plans.",
+  "topic": "Principles",
+  "readTime": "7 min read",
+  "published": "2026-09-08",
+  "updated": "2026-09-08",
+  "relatedProject": "svg-vector-lab",
+  "intro": "A browser autosave is a convenient working copy, not a backup plan. Before clearing site data, switching devices or finishing an important session, export the work into a format you can reopen and verify that file outside the original tab. Save the inputs and assumptions alongside any result that you will need to reproduce.",
+  "sections": [
+    {
+      "heading": "Identify what the tool actually saves",
+      "paragraphs": [
+        "Start with the product's description of its storage. An editor may keep the latest drawing in the current browser, a calculator may save named scenarios, and a tool may offer only a download of the final output. These are different promises. Look for a specific Save, Export, Download, Print or Share action and understand what each one preserves.",
+        "SVG Vector Lab documents browser localStorage autosave and SVG export. Project Quantity Lab offers local saved projects, printable shopping lists and explicitly created share links. The Utilitas hub itself is an editorial catalogue, so it does not hold a central account containing all work from those separate tools. Treat each product's saved state independently instead of assuming the catalogue synchronizes it.",
+        "MDN explains that localStorage belongs to a particular origin and can survive ordinary browser restarts. That persistence is useful for continuing work, but it does not establish an independent copy on another device. A browser profile, a private window and a different production domain can each give you a different storage context."
+      ]
+    },
+    {
+      "heading": "Export before changing the browser environment",
+      "paragraphs": [
+        "Make a checkpoint before actions that may remove access to the current working copy: clearing site data, resetting a browser profile, moving to another computer or finishing a private-browsing session. MDN states that localStorage created in private browsing is cleared when the last private tab closes. Export while the work is still available instead of relying on a warning appearing at the right moment.",
+        "For broader browser storage, MDN also distinguishes best-effort storage from persistent storage. Storage conditions and user deletion matter. You do not need to diagnose the browser's entire storage system to protect a drawing; a verified export gives you a much more direct recovery path.",
+        "Use a filename that identifies the work and version without exposing sensitive client or personal details. A name such as kitchen-plan-2026-09-08.pdf can be useful privately, while a public attachment may need a more neutral name. Choose the storage location deliberately rather than leaving the only copy somewhere you routinely clear."
+      ],
+      "bullets": [
+        "Export a checkpoint after a meaningful edit or before a disruptive browser change.",
+        "Keep a working format as well as a presentation copy when both are useful.",
+        "Store important files using your normal device backup process."
+      ]
+    },
+    {
+      "heading": "Preserve the editable work and the visible result",
+      "paragraphs": [
+        "An image export and an editable source file answer different needs. For an SVG drawing, retain the SVG if you want to change paths later; a PNG records a rendered image and does not preserve editable vector geometry. Open both if the deliverable needs both forms, and check that the intended background and dimensions survived export.",
+        "For a materials estimate, save more than a single total. Keep room measurements, units, chosen waste allowance, product coverage, package size and the date of the price you used. A PDF shopping list can be a useful record, but do not assume it can be imported back into the calculator as an editable project.",
+        "An illustrative tile order of eleven boxes is hard to audit by itself. Eleven boxes based on 142 square feet, a stated allowance and 15.5 square feet per carton gives you a starting point for checking a replacement product. The export is more useful when the decisions behind it are visible."
+      ]
+    },
+    {
+      "heading": "Test recovery with the exported copy",
+      "paragraphs": [
+        "Find the downloaded file in your file manager and open it, rather than relying on the browser's download notification. Confirm the filename, size, content and expected version. If you need to edit it later, try opening it in the tool that supports that format, preferably without replacing your only active working copy.",
+        "Inspect a drawing at the intended size, read the values in a printed plan, and verify that all pages or sections are present. The goal is to discover an empty export, a stale version or a missing assumption while the original working state still exists. This is a small recovery rehearsal, not a promise that every future app version will import the file identically."
+      ]
+    },
+    {
+      "heading": "Treat share links as a separate disclosure choice",
+      "paragraphs": [
+        "A share link may encode a calculator's inputs in its address. Anyone you give the full link to may be able to see those inputs. Keep a private record when appropriate and inspect the tool's sharing explanation before posting a link in a public issue, chat or document.",
+        "A bookmark can help return to a page, but it is not automatically a backup of the page's saved work. Likewise, a link to an image editor may reopen the editor without containing your drawing. For an important handoff, send a verified supported file and the minimum useful context, then keep an independent copy yourself.",
+        "Review this routine when a tool changes its export or storage behaviour. Browser documentation was checked September 8, 2026; no particular retention period or cloud synchronization is promised here."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Autosave helps you resume work; a verified export provides a separate recovery copy.",
+    "Preserve editable formats and calculation assumptions when future changes matter.",
+    "Open the downloaded result before clearing browser data or closing a private session.",
+    "Review what a share link discloses before using it as a handoff."
+  ],
+  "sources": [
+    {
+      "label": "MDN: localStorage scope and private browsing",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+    },
+    {
+      "label": "MDN: browser storage persistence and eviction",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/Storage_API/Storage_quotas_and_eviction_criteria"
+    }
+  ]
+},
+  {
     slug: 'edit-svg-online-without-uploading-files',
     title: 'How to edit SVG files online without uploading your artwork',
     shortTitle: 'Edit SVG files without uploading them',
