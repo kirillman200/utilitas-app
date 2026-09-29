@@ -27,6 +27,77 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+  "slug": "check-calculator-share-links-before-sending",
+  "title": "Check a calculator share link before sending it",
+  "shortTitle": "Check a calculator share link",
+  "description": "Inspect what a shared calculator URL contains, test the recipient’s view and choose a smaller summary when your project inputs should remain private.",
+  "topic": "Protect",
+  "readTime": "7 min read",
+  "published": "2026-09-29",
+  "updated": "2026-09-29",
+  "relatedProject": "project-quantity-lab",
+  "intro": "Before sending a calculator share link, open the exact link in a separate browser context and check what it restores. A browser-local calculation can still become a disclosure when you deliberately put its inputs into a URL. Share only the measurements, labels and assumptions the recipient actually needs.",
+  "sections": [
+    {
+      "heading": "Find out what the Share action includes",
+      "paragraphs": [
+        "A share link may point to an empty calculator, encode an entire scenario, or identify a saved record held elsewhere. Those designs create different expectations. Read the tool’s explanation and inspect the result of the action rather than assuming that every link behaves like a document with an access-control menu.",
+        "Project Quantity Lab documents explicit URL sharing as a separate action from local saves. The Utilitas hub links to that independent tool; it does not provide a central account or a private project-sharing service. A useful review therefore starts at the particular calculator and the particular link you are about to send.",
+        "Make a list of the fields that matter: dimensions, units, material type, waste, package coverage, prices and any free-text labels. Some are harmless in a shopping discussion, while the same fields may reveal a confidential job or client budget in a public post. Privacy depends on the context and audience as well as the data type."
+      ]
+    },
+    {
+      "heading": "Recognise the query and fragment without treating encoding as secrecy",
+      "paragraphs": [
+        "The part of a URL after a question mark is its query. MDN explains that a query supplies parameters whose meaning depends on the application. The part introduced by a hash sign is a fragment. MDN notes that the fragment is not sent to the server in the ordinary resource request, although page code can use it.",
+        "Neither syntax is an access-control system. Someone who receives the full link receives those characters, including an encoded payload if present. Percent-escaped text or a long compact string can be inconvenient to read while still being directly usable by the calculator. Do not decide that a link is private because it looks complicated.",
+        "OWASP describes how sensitive query values can appear in places such as browser history and server logs. HTTPS protects transport but does not erase the URL from every place that handles it. Actual referrer and logging behaviour depends on the site and browser; avoid claiming that every share is exposed in every possible channel."
+      ]
+    },
+    {
+      "heading": "Test the view a recipient can reproduce",
+      "paragraphs": [
+        "Use a harmless sample first if you are learning an unfamiliar share feature. Create a clearly labelled test scenario, copy its link and open it in another browser profile or a private window. Check whether the expected fields appear without relying on the original tab’s saved state. You are testing the sharing behaviour, not creating a backup by opening a private window.",
+        "Then inspect the exact final link with the real, intentionally shareable scenario. Check each important input, its unit and the result. A restored total that looks plausible can still use a default room dimension or a different package size. Include a short explanation of the assumptions so that the reader can evaluate the calculation instead of seeing an unexplained number.",
+        "For a flooring estimate, a useful message might identify the measured area, the chosen waste allowance and the carton coverage. It need not identify the homeowner, street address or an internal client code. Keep identifiers out of the scenario when they are not necessary to the discussion."
+      ]
+    },
+    {
+      "heading": "Choose a smaller deliverable when inputs are unnecessary",
+      "paragraphs": [
+        "If the recipient only needs a purchase quantity, a concise written summary or a reviewed shopping-list export may be more suitable than the full editable scenario. Explain which product coverage and allowance produced the result. Remove confidential notes from the copy you share while retaining them in your own project records where appropriate.",
+        "A screenshot is not automatically safer. It may include browser tabs, account names or unrelated information around the result. A document can also have an identifying filename. Review the actual attachment and its visible contents, just as you would review a URL. Photo Privacy Lab can help inspect supported image metadata and apply manual redaction, but it does not review the surrounding conversation or decide who should receive it."
+      ]
+    },
+    {
+      "heading": "Do not assume a copied link can be revoked",
+      "paragraphs": [
+        "If the URL itself contains the scenario, clearing the original browser’s saved projects does not reach into a recipient’s message and remove that URL. Unless the tool explicitly offers server-side permissions, expiry or revocation, avoid promising that access will disappear later. A recipient may also forward the link or save the visible result.",
+        "Before sending, check the conversation’s participants and whether it is a private exchange, a shared workplace channel or a public forum. Keep the smallest useful scope. After sending, retain your own dated assumptions if you will need to explain the estimate later; a shared link can be a convenient handoff without becoming the authoritative record of every purchasing decision."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Test the exact URL outside the original browser state.",
+    "Treat encoded inputs as shared information, not encrypted secrets.",
+    "Share a reviewed summary when the full scenario is unnecessary."
+  ],
+  "sources": [
+    {
+      "label": "MDN: query components",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Query"
+    },
+    {
+      "label": "MDN: fragment components",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment"
+    },
+    {
+      "label": "OWASP: information exposure through URL query strings",
+      "href": "https://community.owasp.org/vulnerabilities/Information_exposure_through_query_strings_in_url"
+    }
+  ]
+},
+  {
   "slug": "back-up-browser-saved-work",
   "title": "How to back up work saved in a browser tool",
   "shortTitle": "Back up browser-saved work",
