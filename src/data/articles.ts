@@ -27,6 +27,78 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+  "slug": "print-calculator-results-without-losing-context",
+  "title": "Print calculator results without losing the useful details",
+  "shortTitle": "Print a useful calculator record",
+  "description": "Check page breaks, units, assumptions and privacy before printing or saving a browser calculator result as a PDF you can use away from the screen.",
+  "topic": "Plan",
+  "readTime": "6 min read",
+  "published": "2026-10-06",
+  "updated": "2026-10-06",
+  "relatedProject": "project-quantity-lab",
+  "intro": "A useful printed calculator result includes its inputs, units and assumptions as well as the final number. Inspect the print preview, then open the saved PDF or check the paper copy. A result that fits the screen can lose a column, a label or a warning when it moves to a page.",
+  "sections": [
+    {
+      "heading": "Choose the record you need away from the browser",
+      "paragraphs": [
+        "Start with the task the printout will support. At a materials counter, you may need the product specification, package count and a few measurements. For a later review, you may also need the source of the coverage figure and the allowance applied. Printing every panel is not automatically more useful than a short, clearly labelled record.",
+        "Project Quantity Lab offers printable shopping lists as part of its materials workflow. Use that dedicated view when it provides the information you need, then inspect its output. Utilitas is the editorial hub that links to the calculator; it does not hold a central copy of your measurements or a cloud archive of the resulting document.",
+        "Before opening the print dialog, give the scenario an unambiguous identity in your own records: which room or area, which material and which revision of the plan. Use a neutral project label if the copy will leave your household or workplace. An address or client name may add disclosure without helping the shop fulfil the order."
+      ]
+    },
+    {
+      "heading": "Understand why the page can change in print",
+      "paragraphs": [
+        "MDN documents that websites can apply different styles when printed or saved as PDF. A print stylesheet can change layout and hide elements that are useful only on screen. The preview is therefore a separate view to review, not merely a smaller photograph of the open tab.",
+        "Open your browser’s print preview and inspect every page. Look for cut-off table columns, missing units, overlapping labels and a heading separated from the number it describes. If a chart relies on colour, check whether its labels still make sense in the output you will actually use. Do not assume that enabling background graphics fixes every chart or layout problem.",
+        "Try the paper size and orientation appropriate to the destination. A wide result may read better in landscape. Adjust margins or scaling carefully, but stop if the only way to fit the page is to make the numbers too small to read. A second page can be more useful than a compressed single sheet."
+      ]
+    },
+    {
+      "heading": "Keep the assumptions attached to the quantity",
+      "paragraphs": [
+        "Check that the output distinguishes the measured requirement from the purchase quantity. For example, a list showing ten boxes is incomplete if nobody can tell what area per box was assumed. Record the chosen coverage, allowance and product variant, especially when another person will compare the result with a store label.",
+        "Use a compact companion note if the print view omits an important assumption. A hypothetical note might say: living-room flooring, measured area 16 square metres, allowance 10 percent, carton coverage to be confirmed before ordering. That final qualification is more useful than allowing an unverified package size to look settled. These are example fields, not a validated order.",
+        "A printed mortgage calculation needs its own scope, such as rate, amortization and payment frequency. It is an illustration under those inputs, not a lender offer. Keep source dates and exclusions visible where the decision depends on them. Printing should preserve uncertainty instead of turning a provisional result into an authoritative-looking promise."
+      ]
+    },
+    {
+      "heading": "Review headers, filenames and the recipient’s copy",
+      "paragraphs": [
+        "Inspect any browser-added headers and footers. Depending on settings, they may show a page title, URL or date. Decide whether those details help the recipient, and avoid distributing a URL that contains inputs you did not intend to share. Review the output itself after changing print settings rather than assuming a checkbox had the desired effect.",
+        "Choose a filename that identifies the task without unnecessary personal information. Open the saved PDF from its final location, scroll through every page and confirm that the last line and all required columns are present. If sending paper, check the physical copy too, because printer settings and legibility add another step after the browser preview.",
+        "Do not describe Save as PDF as a guarantee that every property or embedded detail is private. This article covers a practical content review, not a PDF sanitisation audit. Photo Privacy Lab supports particular image formats and is not a document-metadata cleaner. Use a workflow appropriate to the actual file type and sensitivity."
+      ]
+    },
+    {
+      "heading": "Preserve an editable record separately",
+      "paragraphs": [
+        "A readable printout does not necessarily restore the calculator’s editable state. Keep the original measurements and assumptions in a separate record you control, and use the tool’s supported save or export behaviour where available. Reopening a PDF proves that the document is readable; it does not prove that a future calculator session can be reconstructed automatically.",
+        "When the plan changes, create a clearly dated replacement and make it obvious which copy should be used for purchasing. Check the same small set of items each time: scope, units, inputs, assumptions, rounded quantities and exclusions. Research checked October 6, 2026. Browser controls vary, so use the preview and final file as the evidence for your current setup."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Inspect every page of the preview and final copy.",
+    "Keep units and assumptions beside the purchase quantity.",
+    "Save the editable project information separately from the printout."
+  ],
+  "sources": [
+    {
+      "label": "MDN: how print styles differ from screen styles",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Printing"
+    },
+    {
+      "label": "Utilitas: check a calculator share link before sending",
+      "href": "https://utilitas.app/articles/check-calculator-share-links-before-sending/"
+    },
+    {
+      "label": "Utilitas: back up browser-saved work",
+      "href": "https://utilitas.app/articles/back-up-browser-saved-work/"
+    }
+  ]
+},
+  {
   "slug": "check-calculator-share-links-before-sending",
   "title": "Check a calculator share link before sending it",
   "shortTitle": "Check a calculator share link",
