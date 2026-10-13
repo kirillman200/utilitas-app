@@ -37,7 +37,10 @@ describe('public route contract', () => {
       expect(html, `${route.path} canonical`).toContain(`rel="canonical" href="${absolute(route.path)}"`);
       expect(html, `${route.path} h1`).toMatch(/<h1(?:\s[^>]*)?>[\s\S]*?<\/h1>/);
       expect(html, `${route.path} Open Graph`).toContain(`property="og:url" content="${absolute(route.path)}"`);
-      expect(html, `${route.path} share image`).toContain(`${SITE.origin}/assets/utilitas-share.png`);
+      const article = articles.find((item) => articlePath(item) === route.path);
+      const shareImage = absolute(article?.image?.src || '/assets/utilitas-share.png');
+      expect(html, `${route.path} share image`).toContain(`property="og:image" content="${shareImage}"`);
+      expect(html, `${route.path} Twitter image`).toContain(`name="twitter:image" content="${shareImage}"`);
       expect(html, `${route.path} SVG favicon`).toContain(
         'rel="icon" type="image/svg+xml" href="/favicon.svg"',
       );

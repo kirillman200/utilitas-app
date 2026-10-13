@@ -6,6 +6,7 @@ export interface ArticleSection {
 }
 
 export interface ArticleDefinition {
+  image?: { src: string; alt: string; width: number; height: number };
   slug: string;
   title: string;
   shortTitle: string;
@@ -26,6 +27,90 @@ export interface ArticleDefinition {
 }
 
 export const articles: ArticleDefinition[] = [
+  {
+  "slug": "browser-tool-file-handoff",
+  "title": "Hand off browser-tool files someone else can actually use",
+  "shortTitle": "A useful browser-tool handoff",
+  "description": "Package the intended output, needed source and a short handoff note. Reopen the files and check the recipient can continue without your browser session.",
+  "topic": "Create",
+  "readTime": "6 min read",
+  "published": "2026-10-13",
+  "updated": "2026-10-13",
+  "relatedProject": "svg-vector-lab",
+  "intro": "A useful file handoff includes the exact output the other person needs, the source required for any agreed editing, and a short note explaining what each file is for. Test the package outside your working tab. Seeing a result in your browser is not evidence that someone else can open or continue it.",
+  "sections": [
+    {
+      "heading": "Start with the recipient’s next action",
+      "paragraphs": [
+        "Write one sentence describing what the recipient will do: place a PNG in a presentation, adjust an SVG, compare a materials estimate or publish a cleaned photo. That action determines the useful format and context. A colleague placing a finished graphic may need only a checked image; someone revising it needs an editable representation and an explanation of what can still change.",
+        "Agree on the boundary before collecting files. Do they need the final output, editable source, supporting measurements or all three? Avoid sending a whole working folder just because it is convenient. A large bundle can contain private originals, discarded versions and irrelevant screenshots while still omitting the one source file needed for revision.",
+        "Utilitas links to independent browser tools. It does not create a shared project account or a central delivery folder across them. Your handoff therefore needs its own deliberate destination and a clear description of what has actually been included."
+      ]
+    },
+    {
+      "heading": "Separate a finished rendering from editable information",
+      "paragraphs": [
+        "For SVG work, a PNG is a rendering made of pixels, while an SVG can retain vector elements and text. Deliver the format appropriate to the agreed job and inspect the actual exported source before promising a particular editing capability. Import, sanitisation and export behaviour can affect supported content; the file extension alone does not establish that every original feature survived.",
+        "For a materials estimate, a printed result may be readable but insufficient to recreate the calculation. Include the relevant measurements, units, product coverage, chosen allowance and date if someone else must continue the planning. A short companion note can be more useful than a screenshot of a total without its inputs.",
+        "For a privacy-cleaned photograph, the original may be intentionally excluded. Say which derivative is intended for sharing and do not place the private original beside it in a convenient ZIP. Source-file handoff is a choice governed by the task, not a rule that every recipient should receive everything."
+      ]
+    },
+    {
+      "heading": "Write a small manifest with meaning, not just filenames",
+      "paragraphs": [
+        "A practical handoff note can list each filename, its purpose, its expected format and one acceptance check. For example: badge-final.svg, editable graphic for review; badge-preview.png, reference appearance only; readme.txt, agreed colours and unresolved font dependency. These are hypothetical filenames, not exports supplied by Utilitas.",
+        "Identify the current version and explain any intentional limitation. If a font needs confirmation on the recipient’s machine, say so. If a materials price was checked on a particular date, retain that date. If a cleaned photo still contains visible location clues, do not describe metadata removal as complete anonymity.",
+        "Keep the note proportionate. Most small jobs need a few lines explaining the result, its source and what remains open. The purpose is to make the next action reproducible without a private chat history, not to build a second documentation project."
+      ]
+    },
+    {
+      "heading": "Open the downloaded files from their final location",
+      "paragraphs": [
+        "Close or set aside the editing view, locate the actual downloads and reopen them with the kind of application the recipient will use. Check dimensions, legibility, missing content and filenames. MDN notes that a download attribute supplies a suggested filename and does not by itself prove that a download will occur. Treat the saved file as the evidence.",
+        "For a vector delivery, compare the exported SVG and any reference PNG. For a calculation, check the visible units and assumptions against the source measurements. For a privacy derivative, inspect visible content and use the tool’s supported independent rescan. Each check should match the failure that would make that particular handoff unusable.",
+        "A local save inside a browser is a separate thing from a file you can send. MDN describes localStorage as storage associated with an origin. Do not assume that copying a page URL transports browser-saved work, or that another browser profile has your state. Use the individual tool’s documented export or sharing mechanism and verify its scope."
+      ]
+    },
+    {
+      "heading": "Confirm receipt without broadening access",
+      "paragraphs": [
+        "Send through the agreed channel and ask the recipient to confirm the specific action that matters, such as opening the SVG or finding the measurement inputs. A message marked delivered is not the same as a successful import. If their application changes the result, compare the exported file and viewing context before repeatedly sending the same package.",
+        "Share only the files and permissions needed for that task. Do not send a browser profile, account password or unrelated project history to compensate for an unclear export. Keep your own private working copy separately, and label any corrected package so the recipient knows which version supersedes the earlier one.",
+        "Research checked October 13, 2026. Browser and application behaviour can differ. This checklist is an editorial method for a verifiable handoff, not a claim that all listed tools preserve identical editing features or provide cloud collaboration."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Choose formats from the recipient’s next action.",
+    "Label output, editable information and unresolved dependencies separately.",
+    "Reopen the actual delivery files outside the working tab.",
+    "Confirm the recipient can perform the agreed task."
+  ],
+  "sources": [
+    {
+      "label": "MDN: download filenames and browser behaviour",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/download"
+    },
+    {
+      "label": "MDN: localStorage belongs to an origin",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage"
+    },
+    {
+      "label": "Utilitas: preserving your own browser-saved work",
+      "href": "https://utilitas.app/articles/back-up-browser-saved-work/"
+    },
+    {
+      "label": "Utilitas: checking calculator share links",
+      "href": "https://utilitas.app/articles/check-calculator-share-links-before-sending/"
+    }
+  ],
+  "image": {
+    "src": "/images/articles/browser-tool-file-handoff.png",
+    "alt": "An output file and instruction note handed from a folder to a laptop",
+    "width": 1730,
+    "height": 909
+  }
+},
   {
   "slug": "print-calculator-results-without-losing-context",
   "title": "Print calculator results without losing the useful details",

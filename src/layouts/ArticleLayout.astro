@@ -18,6 +18,7 @@ const schema = [
     '@type': 'Article',
     headline: article.title,
     description: article.description,
+    image: article.image ? absolute(article.image.src) : undefined,
     datePublished: article.published,
     dateModified: article.updated,
     inLanguage: 'en-CA',
@@ -43,6 +44,7 @@ const schema = [
   path={path}
   schema={schema}
   ogType="article"
+  image={article.image}
   published={article.published}
   updated={article.updated}
 >
@@ -59,6 +61,7 @@ const schema = [
           <p class="kicker">Practical method / {article.topic}</p>
           <h1>{article.title}</h1>
           <p class="article-intro">{article.intro}</p>
+          {article.image && <figure><img src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} style="width:100%;height:auto" /><figcaption>Original AI-generated editorial illustration, October 13, 2026.</figcaption></figure>}
         </div>
       </div>
     </header>
