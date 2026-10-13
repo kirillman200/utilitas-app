@@ -15,7 +15,7 @@
     "astro": "astro",
     "check": "astro check && tsc --noEmit",
     "test": "npm run test:site",
-    "test:site": "vitest run tests/site-contract.test.ts tests/worker.test.ts tests/indexnow.test.ts",
+    "test:site": "vitest run tests/site-contract.test.ts tests/worker.test.ts tests/indexnow.test.ts tests/analytics.test.ts",
     "validate": "npm run check && npm run build && npm run test:site",
     "deploy:dry": "npm run validate && wrangler deploy --dry-run",
     "deploy": "npm run validate && wrangler deploy",

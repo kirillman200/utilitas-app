@@ -92,6 +92,7 @@
     var previous = readChoice();
     writeChoice(value);
     closePanel();
+    if (settings) settings.focus();
     if (value === "granted") {
       loadAnalytics();
     } else if (loaded && previous === "granted") {
@@ -104,7 +105,8 @@
     if (!panel) return;
     panel.hidden = false;
     if (settings) settings.hidden = true;
-    if (allowButton) allowButton.focus();
+    var firstAction = allowButton && !allowButton.disabled ? allowButton : denyButton;
+    if (firstAction) firstAction.focus();
   }
 
   if (navigator.globalPrivacyControl === true) {
