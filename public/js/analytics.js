@@ -89,13 +89,12 @@
   }
 
   function choose(value) {
-    var previous = readChoice();
     writeChoice(value);
     closePanel();
     if (settings) settings.focus();
     if (value === "granted") {
       loadAnalytics();
-    } else if (loaded && previous === "granted") {
+    } else if (loaded) {
       gtag("consent", "update", { analytics_storage: "denied" });
       window.location.reload();
     }
