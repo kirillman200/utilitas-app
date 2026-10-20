@@ -28,6 +28,127 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+  "slug": "finish-browser-tool-session-shared-computer",
+  "title": "Finish a browser-tool session on a shared computer",
+  "shortTitle": "Finish a shared-computer session",
+  "description": "Save and reopen the work you need, then check your own site storage, downloaded files and signed-in services before leaving a shared computer.",
+  "topic": "Protect",
+  "intro": "Before leaving a shared computer, preserve the work you need, reopen that private copy, then deal separately with your own browser-saved work, downloaded files and signed-in services. Closing a tool tab should be the end of this checklist, not the whole checklist. Use this method only for material you created and controls you are allowed to use. On a library, school or workplace computer, follow its session and file-handling rules. If your work is mixed with someone else's saved data, stop before deleting anything you cannot identify as yours.",
+  "sections": [
+    {
+      "heading": "Make a small inventory before you close anything",
+      "paragraphs": [
+        "Keep the current working state open while you identify what needs attention. Write a short list on your own device or a permitted private note: the tool address, the work to keep, files created on this computer and any services you signed into. Do not put sensitive project details into a public checklist.",
+        "For example, a materials-planning session might involve a calculator's saved scenario, a downloaded shopping-list PDF and a separate email account used to send it. Treat those as three items with different exit actions. This is a planning example, not a claim that every calculator saves scenarios or exports PDFs."
+      ],
+      "bullets": [
+        "Work to keep: which output and assumptions will you need later?",
+        "Local copies: which files did you download, print to PDF or save elsewhere?",
+        "Access: which websites, browser profile or computer session did you personally sign into?"
+      ]
+    },
+    {
+      "heading": "Save a private copy and reopen that exact file",
+      "paragraphs": [
+        "Use the particular tool's documented export or save option, if it has one. Choose a permitted destination you control and can access after leaving. Do not assume an editable project export exists: a readable result and an editable source are different deliverables. Our guide to backing up browser-saved work explains that distinction.",
+        "Find the exported file rather than trusting a download notification. Open that exact copy and check the intended version, all relevant pages, units and assumptions. For a drawing you need to edit again, also check that a compatible tool opens the source without replacing your only working copy. If policy permits a personal removable drive, confirm the copy there is the one you checked, not just a second file with the same name.",
+        "If no suitable export is available, preserve an allowed record of the essential inputs and result, making its limits explicit. If you cannot retain a usable copy within device policy, ask the administrator about an approved route before clearing the current work. Do not upload it to an unfamiliar service just to get it off the computer."
+      ],
+      "note": "Checkpoint: do not clear your only working copy while the replacement is missing, unreadable or stored somewhere you cannot later reach."
+    },
+    {
+      "heading": "Clear only your own saved work at the correct site",
+      "paragraphs": [
+        "MDN distinguishes two Web Storage mechanisms: localStorage belongs to an origin, the website's storage boundary rather than an individual user, and can persist after the browser closes; sessionStorage is separated by origin and tab and ends with that tab. This distinction is why closing a tab is not a general way to remove saved browser work. It does not tell you which storage mechanism a particular tool uses. [1]",
+        "Check the address of the tool that actually held your work. Utilitas links to separate tools; do not assume clearing the hub removes a drawing or scenario on a linked tool's site. The browser-first privacy guide explains why local processing and a complete privacy guarantee are different claims.",
+        "Prefer a clearly scoped control that removes your identified draft or scenario. Read its confirmation before using it. If you need browser-level site-data removal, Chrome documents searching for a particular site under Settings, Privacy and security, Third-party cookies, See all site data and permissions, then deleting that site's entry. Its documentation warns that removing cookies can sign you out and remove preferences. [2]",
+        "A site entry is not a list of people. If another person's work shares that site storage in the same browser profile, deleting the entry is too broad. Ask the owner or administrator for help instead. Do not reset the browser, clear every site's data or paste a storage-clearing script into developer tools."
+      ]
+    },
+    {
+      "heading": "Review downloaded files separately",
+      "paragraphs": [
+        "Look at the download locations and folders you actually used. After verifying the private copy you are keeping, remove only your identified temporary local copies where policy permits. Check for earlier exports as well as the final one. Close any viewer still displaying those files and collect any printouts you created.",
+        "Chrome's browsing-data documentation separates the download list from the files: clearing download history removes list entries, not the downloaded files on the computer. It also warns that deleting certain browsing data while signed into Chrome can affect data saved in your Google Account and other devices. Do not choose a broad cleanup simply because it is convenient. [3]",
+        "If a file went into a managed or shared folder and you cannot tell what removing it would affect, leave it alone and use the administrator's approved process. Ordinary deletion is a housekeeping action here, not a promise of forensic erasure or removal from backups. Do not empty a shared recycle bin or delete someone else's material."
+      ]
+    },
+    {
+      "heading": "Sign out of services you used",
+      "paragraphs": [
+        "Check your inventory for mail, cloud storage or another signed-in service used alongside the tool. Use each service's own sign-out control and wait for its signed-out state. Microsoft explicitly recommends signing out after public-computer use and closing the browser windows afterwards; its account menu is one documented example, not a universal interface. [4]",
+        "Keep website sign-out separate from browser-profile and computer-session controls. If you accidentally signed into the browser itself, follow its current guidance with the administrator rather than disconnecting the device owner's account. Do not remove a profile you cannot identify as yours. Utilitas does not provide a hub account that signs you out of these separate services; see its privacy policy."
+      ]
+    },
+    {
+      "heading": "End your temporary browser session and leave a clear boundary",
+      "paragraphs": [
+        "If you used Chrome Incognito, finish preserving needed work before closing all your Incognito windows. Google says the session ends only when all those windows close. Chrome retains downloads and bookmarks created during Incognito, so the file review still matters. Incognito also does not make your activity invisible to websites or organisations managing your network. [5]",
+        "Do not close another person's windows to complete your checklist. On a managed device, use the posted end-session or sign-out procedure. If a required control is unavailable, tell the administrator exactly which category remains unresolved: your saved tool work, your local file or your signed-in service. Do not claim the machine is clean because the page is gone.",
+        "Finish with a small, useful result: the copy you need opens from its intended private destination, your identified temporary copies have been handled within policy, and your services show you signed out. Return to Field Notes for the backup or file-handoff method when you need those separate workflows.",
+        "Sources checked October 20, 2026. Chrome desktop controls are examples and may change or be restricted on managed devices. This checklist is not a tool-by-tool storage audit, a test of your computer, an anonymity method or a guarantee that every copy or service-side record has disappeared."
+      ]
+    }
+  ],
+  "takeaways": [
+    "Reopen a needed private copy before removing the browser working state.",
+    "Review site storage, downloaded files and signed-in services as separate tasks.",
+    "Remove only data you can identify as yours, within the device owner's rules.",
+    "End all of your temporary session windows, but do not mistake that for guaranteed erasure."
+  ],
+  "sources": [
+    {
+      "label": "[1] MDN: Web Storage API, origin and tab scope",
+      "href": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
+    },
+    {
+      "label": "[2] Google Chrome Help: delete specific site cookies and data",
+      "href": "https://support.google.com/chrome/answer/95647?hl=en"
+    },
+    {
+      "label": "[3] Google Chrome Help: what deleting browsing data does",
+      "href": "https://support.google.com/chrome/answer/2392709?co=GENIE.Platform%3DDesktop&hl=en"
+    },
+    {
+      "label": "[4] Microsoft Support: avoid staying signed in on a public computer",
+      "href": "https://support.microsoft.com/en-us/accounts-billing/manage/avoid-staying-signed-in-on-a-public-computer"
+    },
+    {
+      "label": "[5] Google Chrome Help: Browse in Incognito mode",
+      "href": "https://support.google.com/chrome/answer/95464?hl=en"
+    },
+    {
+      "label": "Utilitas: backup",
+      "href": "/articles/back-up-browser-saved-work/"
+    },
+    {
+      "label": "Utilitas: browser-first privacy guide",
+      "href": "/articles/what-browser-first-tools-do-for-privacy/"
+    },
+    {
+      "label": "Utilitas: privacy policy",
+      "href": "/privacy/"
+    },
+    {
+      "label": "Utilitas: Field Notes",
+      "href": "/articles/"
+    },
+    {
+      "label": "Utilitas: file-handoff method",
+      "href": "/articles/browser-tool-file-handoff/"
+    }
+  ],
+  "readTime": "7 min read",
+  "published": "2026-10-20",
+  "updated": "2026-10-20",
+  "image": {
+    "src": "/images/articles/finish-browser-tool-session-shared-computer.png",
+    "alt": "A shared library computer showing a browser and separate file folders while a person picks up a removable drive.",
+    "width": 1672,
+    "height": 940
+  }
+},
+  {
   "slug": "browser-tool-file-handoff",
   "title": "Hand off browser-tool files someone else can actually use",
   "shortTitle": "A useful browser-tool handoff",
