@@ -139,8 +139,8 @@ export const articles: ArticleDefinition[] = [
     }
   ],
   "readTime": "7 min read",
-  "published": "2026-10-20",
-  "updated": "2026-10-20",
+  "published": "2026-10-22",
+  "updated": "2026-10-22",
   "image": {
     "src": "/images/articles/finish-browser-tool-session-shared-computer.png",
     "alt": "A shared library computer showing a browser and separate file folders while a person picks up a removable drive.",
