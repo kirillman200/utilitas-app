@@ -61,7 +61,7 @@ const schema = [
           <p class="kicker">Practical method / {article.topic}</p>
           <h1>{article.title}</h1>
           <p class="article-intro">{article.intro}</p>
-          {article.image && <figure><img src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} style="width:100%;height:auto" /><figcaption>Original AI-generated editorial illustration, October 13, 2026.</figcaption></figure>}
+          {article.image && <figure><img src={article.image.src} alt={article.image.alt} width={article.image.width} height={article.image.height} style="width:100%;height:auto" /><figcaption>Original AI-generated editorial illustration, <time datetime={article.published}>{article.published}</time>.</figcaption></figure>}
         </div>
       </div>
     </header>
