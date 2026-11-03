@@ -28,6 +28,58 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+    slug: 'what-is-utilitas',
+    title: 'What is Utilitas? A guide to its four browser tools',
+    shortTitle: 'Choose a Utilitas tool',
+    description: 'Find the Utilitas tool for editing an SVG, preparing a photo to share, estimating project materials, or comparing mortgage costs. See what to check before using each result.',
+    topic: 'Principles',
+    readTime: '3 min read',
+    published: '2026-11-02',
+    updated: '2026-11-02',
+    intro: 'Utilitas is a collection of four browser tools. Which one you open depends on what you want to leave with. Suppose you are moving house. A photo for a listing, a paint shopping list, a floor-plan icon and a monthly payment estimate are four jobs with different inputs. Here is how to take each one from a starting file or measurement to a result you can check.',
+    sections: [
+      {
+        heading: 'Prepare a photo to share with Photo Privacy Lab',
+        paragraphs: [
+          'Start here if you have a photograph and want to check what it reveals. A picture of a newly painted room can disclose a location twice. The file may contain GPS coordinates, and the view through the window may show a street sign. Removing the coordinates still leaves the sign visible.',
+          'Open the original in Photo Privacy Lab, inspect the metadata and decide which visible details need covering. Export a separate copy. Reopen that copy, check its metadata and zoom in on the details you covered. When you attach the image to your listing, check the filename so you send the reviewed copy.'
+        ]
+      },
+      {
+        heading: 'Turn room measurements into a shopping list with Project Quantity Lab',
+        paragraphs: [
+          'Choose this tool when you need to buy material. For a paint estimate, measure the walls you plan to cover and write down the units. Keep walls and ceilings separate if they need different products. Use the coverage from the can you intend to buy and count the coats in your plan.',
+          'Before shopping, check the estimate against the package on the shelf. For example, if a flooring plan calls for 21 square metres including waste and each carton covers 2 square metres, you need 11 whole cartons. Keep the measured area and the waste allowance with the list so you can recalculate if a substitute carton covers a different area.'
+        ]
+      },
+      {
+        heading: 'Edit a scalable drawing with SVG Vector Lab',
+        paragraphs: [
+          'If the file is an SVG and you want to change its shapes, colours or paths, open SVG Vector Lab. For a floor-plan legend, for example, you might need to thicken a thin line so the symbol stays legible when printed. Keep a copy of the original before making changes.',
+          'Choose the output for the person receiving it. Save an SVG if they need to adjust the paths later. Export a PNG if they only need a fixed-size image. Open the exported file at the size it will appear in the finished plan and check that the edges and thin lines are visible.'
+        ]
+      },
+      {
+        heading: 'Compare housing scenarios with Mortgage Compass',
+        paragraphs: [
+          'Choose the calculator that answers your housing question. If you know the amount you expect to borrow and want the scheduled payment, start with the payment calculator. If you are deciding whether to buy, the rent-versus-buy calculator lets you compare both paths over the number of years you expect to stay.',
+          'For a purchase, keep two figures handy. The monthly payment helps with your ongoing budget. The closing-cost estimate helps with the cash you need around the purchase date. Record the price, down payment, location and rate alongside the results so you can see what changed when you get a new quote.'
+        ]
+      }
+    ],
+    takeaways: [
+      'Reopen the exported photo or drawing before you share it.',
+      'Keep units, package sizes and allowances with a material estimate.',
+      'Choose a mortgage calculator by the question you need answered.'
+    ],
+    sources: [
+      { label: 'Photo Privacy Lab', href: 'https://exif.utilitas.app/' },
+      { label: 'Project Quantity Lab', href: 'https://home.utilitas.app/' },
+      { label: 'SVG Vector Lab', href: 'https://svgvectorlab.com/' },
+      { label: 'Mortgage Compass calculators', href: 'https://mortgage.utilitas.app/calculators/' }
+    ]
+  },
+  {
   "slug": "finish-browser-tool-session-shared-computer",
   "title": "Finish a browser-tool session on a shared computer",
   "shortTitle": "Finish a shared-computer session",
