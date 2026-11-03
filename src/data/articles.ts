@@ -28,6 +28,109 @@ export interface ArticleDefinition {
 
 export const articles: ArticleDefinition[] = [
   {
+    "slug": "check-browser-tool-keyboard-before-starting",
+    "title": "Check a browser tool works with your keyboard before starting",
+    "shortTitle": "Check keyboard suitability",
+    "description": "Try a harmless input-to-result task, follow visible focus and check how to leave required controls before committing important work to a browser tool.",
+    "topic": "Principles",
+    "readTime": "6 min read",
+    "published": "2026-11-03",
+    "updated": "2026-11-03",
+    "intro": "Before entering important work, try one small, disposable task using your keyboard: enter an input, change a needed option, reach the result and leave any menu or dialog you opened. Watch where focus moves and check the tool's instructions when a control needs a different interaction. The useful outcome is a path you can operate in your own setup, or a specific blocker you can report before investing more time.",
+    "sections": [
+      {
+        "heading": "Choose a miniature task with a clear finish",
+        "paragraphs": [
+          "Write down what you actually need to do, not just the page you want to open. For a calculator, your trial might involve entering a disposable value, changing a unit, running the calculation and reading the result. For an editor, it might mean opening a harmless sample, making one change and reaching the output control. These are planning examples, not claims that a particular tool offers or passes those interactions.",
+          "Keep the trial separate from existing work. Use made-up inputs or a disposable file containing no personal information. Do not open your only original, overwrite a saved project or choose a destructive reset to see what happens. If you already have work in progress, use the separate backup method before trying an unfamiliar interaction.",
+          "W3C's keyboard compatibility guidance explains why using functionality without a mouse matters. For this check, turn that principle into a short route with a start and finish. Include the option that matters to your real job, rather than testing only the easiest field. [1]"
+        ]
+      },
+      {
+        "heading": "Find the instructions and follow visible focus",
+        "paragraphs": [
+          "Read the tool's keyboard help before starting. If controls seem to be skipped, consult the current keyboard-navigation guidance for your own browser and operating system before deciding the site is the cause. Do not copy a shortcut recipe for another setup or change managed-device settings without permission.",
+          "As you move between controls, look for the visible focus indicator: the cue showing which control is ready for keyboard interaction. W3C's preliminary checks distinguish keyboard access and visible focus. Reaching something is not enough if you cannot tell where you are. [2]",
+          "Pause at each control your trial requires. Can you identify the field, option or action that currently has focus? Can you follow the move to the next required control? If the cue disappears or becomes unclear, record that exact point. Do not continue activating controls blindly just to finish the checklist."
+        ]
+      },
+      {
+        "heading": "Operate the controls, not just the route between them",
+        "paragraphs": [
+          "Enter the disposable input, edit it and confirm that the field now contains the intended value. Change a required option and check the selected value before continuing. Then activate the action your task needs and locate the resulting information. For an editor, include any selection or adjustment essential to your job; merely reaching its toolbar does not exercise the editing operation.",
+          "Tab navigation alone is not a complete interaction test. W3C's combobox pattern describes widgets whose options involve additional keyboard interactions and optional behaviours. It is developer guidance, not evidence that the tool in front of you follows that pattern. Use the actual tool's instructions for choosing and confirming an option rather than assuming one set of keys works everywhere. [4]",
+          "Notice whether you can continue after the result appears. Can you return to an input and make the next change you need? If you can reach the action but cannot operate a required control, mark the trial incomplete. A mouse workaround may let you investigate, but it does not show that the keyboard-only path worked."
+        ]
+      },
+      {
+        "heading": "Check how to leave a required menu or dialog",
+        "paragraphs": [
+          "If your task needs a menu, popup or dialog, include both opening and leaving it in the trial. Find the documented way to dismiss it or finish the interaction, then check that you can continue to the next part of your task. Use the disposable work so that an unfamiliar confirmation does not put important content at risk.",
+          "Focus staying inside an open modal dialog is not automatically a keyboard trap. W3C's no-keyboard-trap guidance allows contained focus when the user knows how to leave. It also explains that a non-standard exit method needs to be communicated. Escape is common in many environments, not a promise that every control will close with that key. [3]",
+          "If you cannot find or use an exit, stop and note the control and the instructions you tried. Do not repeatedly activate unknown buttons, install an extension, paste a script or disable a security setting to force a way through. This is the point to ask for help or choose another workflow before bringing important work into the tool."
+        ]
+      },
+      {
+        "heading": "Keep a short observation record",
+        "paragraphs": [
+          "Record enough context to repeat the check without saving private inputs. Separate what you expected from what actually happened. A useful note might say: in the disposable trial, I reached the options control and opened its popup, but could not select the option needed for my task using the documented method. That is an example of report wording, not a test result from this article.",
+          "Keep the note tied to your setup and your intended task. If you later change browser, device or a required part of the workflow, repeat the relevant trial instead of treating an earlier observation as a permanent verdict. When reporting a blocker, include the smallest harmless example that reproduces it, not a confidential project file."
+        ],
+        "bullets": [
+          "Context: date, tool address, browser and operating system used.",
+          "Task: the short input-to-result route and the required option or operation.",
+          "Focus and action: where you were, what you expected and what you observed.",
+          "Exit: the documented method tried and whether you could continue.",
+          "Decision: usable for this trial, a specific blocker, or still uncertain."
+        ]
+      },
+      {
+        "heading": "Make a bounded decision, then check the result separately",
+        "paragraphs": [
+          "If the required route works for you, proceed with the job while retaining your normal backup and output checks. If it does not, use the observation record to ask the tool's support contact about that interaction, or choose a different tool or permitted workflow. You do not need to keep struggling with a control to justify that it does not meet your immediate need.",
+          "A completed keyboard trial does not establish that a calculation is accurate, that an exported file is complete or that your information stays private. Use the separate calculator-result and backup guides for those tasks. If you are still choosing which kind of tool to use, start with the Utilitas tool guide rather than treating keyboard operation as the only selection criterion.",
+          "Sources checked November 3, 2026. This is a preliminary personal-workflow check, not a comprehensive accessibility evaluation, certification or legal-compliance verdict. W3C warns that quick checks can miss significant accessibility barriers. This article does not report compatibility testing of any named tool or establish support for a particular assistive-technology setup. [2]"
+        ]
+      }
+    ],
+    "takeaways": [
+      "Try a harmless miniature task from input to result and exit before entering important work.",
+      "Check visible focus, actual operation and documented exit behaviour as separate observations.",
+      "Record the exact blocker and your setup instead of making a site-wide verdict.",
+      "Keep keyboard suitability separate from result accuracy, backups and privacy."
+    ],
+    "sources": [
+      {
+        "label": "[1] W3C WAI: Keyboard Compatibility",
+        "href": "https://www.w3.org/WAI/perspective-videos/keyboard/"
+      },
+      {
+        "label": "[2] W3C WAI: Easy Checks, keyboard access, visual focus and scope",
+        "href": "https://www.w3.org/WAI/test-evaluate/preliminary/#interaction"
+      },
+      {
+        "label": "[3] W3C: Understanding No Keyboard Trap",
+        "href": "https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html"
+      },
+      {
+        "label": "[4] W3C ARIA APG: Combobox Pattern",
+        "href": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+      },
+      {
+        "label": "Utilitas: choose a browser tool",
+        "href": "/articles/what-is-utilitas/"
+      },
+      {
+        "label": "Utilitas: back up browser-saved work",
+        "href": "/articles/back-up-browser-saved-work/"
+      },
+      {
+        "label": "Utilitas: check an online calculator result",
+        "href": "/articles/how-to-check-an-online-calculator-result/"
+      }
+    ]
+  },
+  {
     slug: 'what-is-utilitas',
     title: 'What is Utilitas? A guide to its four browser tools',
     shortTitle: 'Choose a Utilitas tool',
