@@ -34,8 +34,8 @@ export const articles: ArticleDefinition[] = [
     "description": "Try a harmless input-to-result task, follow visible focus and check how to leave required controls before committing important work to a browser tool.",
     "topic": "Principles",
     "readTime": "6 min read",
-    "published": "2026-11-03",
-    "updated": "2026-11-03",
+    "published": "2026-11-04",
+    "updated": "2026-11-04",
     "intro": "Before entering important work, try one small, disposable task using your keyboard: enter an input, change a needed option, reach the result and leave any menu or dialog you opened. Watch where focus moves and check the tool's instructions when a control needs a different interaction. The useful outcome is a path you can operate in your own setup, or a specific blocker you can report before investing more time.",
     "sections": [
       {
@@ -89,7 +89,7 @@ export const articles: ArticleDefinition[] = [
         "paragraphs": [
           "If the required route works for you, proceed with the job while retaining your normal backup and output checks. If it does not, use the observation record to ask the tool's support contact about that interaction, or choose a different tool or permitted workflow. You do not need to keep struggling with a control to justify that it does not meet your immediate need.",
           "A completed keyboard trial does not establish that a calculation is accurate, that an exported file is complete or that your information stays private. Use the separate calculator-result and backup guides for those tasks. If you are still choosing which kind of tool to use, start with the Utilitas tool guide rather than treating keyboard operation as the only selection criterion.",
-          "Sources checked November 3, 2026. This is a preliminary personal-workflow check, not a comprehensive accessibility evaluation, certification or legal-compliance verdict. W3C warns that quick checks can miss significant accessibility barriers. This article does not report compatibility testing of any named tool or establish support for a particular assistive-technology setup. [2]"
+          "Sources checked November 4, 2026 (Toronto). This is a preliminary personal-workflow check, not a comprehensive accessibility evaluation, certification or legal-compliance verdict. W3C warns that quick checks can miss significant accessibility barriers. This article does not report compatibility testing of any named tool or establish support for a particular assistive-technology setup. [2]"
         ]
       }
     ],
