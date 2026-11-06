@@ -34,8 +34,8 @@ export const articles: ArticleDefinition[] = [
     "description": "Try a harmless input-to-result task, follow visible focus and check how to leave required controls before committing important work to a browser tool.",
     "topic": "Principles",
     "readTime": "6 min read",
-    "published": "2026-11-04",
-    "updated": "2026-11-04",
+    "published": "2026-11-05",
+    "updated": "2026-11-05",
     "intro": "Before entering important work, try one small, disposable task using your keyboard: enter an input, change a needed option, reach the result and leave any menu or dialog you opened. Watch where focus moves and check the tool's instructions when a control needs a different interaction. The useful outcome is a path you can operate in your own setup, or a specific blocker you can report before investing more time.",
     "sections": [
       {
