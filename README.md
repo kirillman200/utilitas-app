@@ -28,6 +28,17 @@ npm run deploy:dry
 
 See `PRODUCTION_READINESS.md` for the release boundary, guide mapping, and required live checks.
 
+Run the rendered article layout regression in Chromium after installing its browser:
+
+```sh
+npx playwright install chromium
+npm run test:layout
+```
+
+This builds the site and starts a temporary preview on port 4413. It checks 320 px,
+390 px and desktop widths, including keyboard and horizontal wheel access to the
+offline guide's results table.
+
 ## Content model
 
 `src/data/site.ts` is the source of truth for the production origin, project catalogue, and canonical public routes. `src/data/articles.ts` owns the Field Notes library. The homepage, structured data, sitemap, tests, and `llms.txt` consume these registries.

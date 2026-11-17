@@ -21,7 +21,8 @@
     "deploy": "npm run validate && wrangler deploy",
     "postdeploy": "npm run indexnow:submit",
     "indexnow:preview": "node scripts/submit-indexnow.mjs",
-    "indexnow:submit": "node scripts/submit-indexnow.mjs --send"
+    "indexnow:submit": "node scripts/submit-indexnow.mjs --send",
+    "test:layout": "npm run build && playwright test"
   },
   "dependencies": {
     "@astrojs/vue": "^7.0.1",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@playwright/test": "^1.65.1",
     "@types/node": "^26.1.1",
     "typescript": "^6.0.3",
     "vitest": "^4.1.12",
