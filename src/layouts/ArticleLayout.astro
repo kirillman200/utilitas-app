@@ -142,8 +142,10 @@ const schema = [
 </BaseLayout>
 
 <style>
+  .article-title,
+  .article-content { min-width: 0; overflow-wrap: anywhere; }
   .article-table { overflow-x: auto; margin-block: 1.5rem; }
-  table { width: 100%; border-collapse: collapse; }
+  table { width: 100%; min-width: 36rem; border-collapse: collapse; }
   caption { text-align: left; margin-bottom: .75rem; font-weight: 600; }
   th, td { padding: .75rem; border-bottom: 1px solid currentColor; text-align: left; vertical-align: top; }
 </style>
