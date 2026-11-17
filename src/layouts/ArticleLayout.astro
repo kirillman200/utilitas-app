@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ArticleInline from '../components/ArticleInline.astro';
 import ArticleRow from '../components/ArticleRow.astro';
 import { SITE, absolute, projects } from '../data/site';
 import { articlePath, articles, type ArticleDefinition } from '../data/articles';
@@ -41,6 +42,7 @@ const schema = [
 <BaseLayout
   title={`${article.title} | Utilitas`}
   description={article.description}
+  ogDescription={article.ogDescription}
   path={path}
   schema={schema}
   ogType="article"
@@ -78,7 +80,18 @@ const schema = [
           <section id={`section-${index + 1}`}>
             <p class="section-number">{String(index + 1).padStart(2, '0')}</p>
             <h2>{section.heading}</h2>
-            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {section.paragraphs.map((paragraph) => <p><ArticleInline text={paragraph} /></p>)}
+            {section.blocks?.map((block) => (
+              block.type === 'paragraph' ? <p><ArticleInline text={block.text} /></p> :
+              block.type === 'orderedList' ? <ol>{block.items.map((item) => <li><ArticleInline text={item} /></li>)}</ol> :
+              <div class="article-table" role="region" aria-label={`${section.heading} results`} tabindex="0">
+                <table>
+                  <caption>{block.caption}</caption>
+                  <thead><tr>{block.headers.map((header) => <th scope="col">{header}</th>)}</tr></thead>
+                  <tbody>{block.rows.map((row) => <tr>{row.map((cell) => <td><ArticleInline text={cell} /></td>)}</tr>)}</tbody>
+                </table>
+              </div>
+            ))}
             {section.bullets && <ul>{section.bullets.map((bullet) => <li>{bullet}</li>)}</ul>}
             {section.note && <aside class="method-note"><strong>Method note</strong><p>{section.note}</p></aside>}
           </section>
@@ -87,8 +100,11 @@ const schema = [
         <section class="takeaway-block" aria-labelledby="takeaway-title">
           <p class="section-number">Summary</p>
           <h2 id="takeaway-title">What to carry forward</h2>
+          {article.takeawaysIntro && <p>{article.takeawaysIntro}</p>}
           <ol>{article.takeaways.map((takeaway) => <li>{takeaway}</li>)}</ol>
         </section>
+
+        {article.closing?.map((paragraph) => <p><ArticleInline text={paragraph} /></p>)}
 
         {article.sources && article.sources.length > 0 && (
           <section aria-labelledby="sources-title">
@@ -124,3 +140,10 @@ const schema = [
     </section>
   )}
 </BaseLayout>
+
+<style>
+  .article-table { overflow-x: auto; margin-block: 1.5rem; }
+  table { width: 100%; border-collapse: collapse; }
+  caption { text-align: left; margin-bottom: .75rem; font-weight: 600; }
+  th, td { padding: .75rem; border-bottom: 1px solid currentColor; text-align: left; vertical-align: top; }
+</style>

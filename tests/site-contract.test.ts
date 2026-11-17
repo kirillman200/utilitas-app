@@ -147,6 +147,20 @@ describe('project catalogue contract', () => {
 });
 
 describe('Field Notes content contract', () => {
+  it('renders the offline rehearsal as usable links, ordered actions and tabular results', () => {
+    const article = articles.find((item) => item.slug === 'test-browser-calculator-offline')!;
+    const html = read(outputFile(articlePath(article)));
+    expect(html).toContain('href="https://home.utilitas.app/calculators/paint-coverage/"');
+    expect(html).toMatch(/<ol[^>]*>\s*<li[^>]*>Reload the exact calculator page/);
+    expect(html).toMatch(/<th scope="col"[^>]*>Stage<\/th>/);
+    expect(html).toMatch(/<td[^>]*>Calculator reload failed\.<\/td>/);
+    expect(html.match(/<tbody[^>]*>[\s\S]*?<\/tbody>/)?.[0].match(/<tr[^>]*>/g)).toHaveLength(6);
+    expect(html).toContain(`property="og:description" content="${article.ogDescription}"`);
+    expect(html).not.toContain('[Chrome');
+    const privacy = read(outputFile('/articles/what-browser-first-tools-do-for-privacy/'));
+    expect(privacy).toContain('href="/articles/test-browser-calculator-offline/">test whether it can recalculate, reload and leave you with a readable offline result</a>');
+  });
+
   it('publishes a substantive, unique article library', () => {
     expect(articles.length).toBeGreaterThanOrEqual(6);
     expect(new Set(articles.map((article) => article.title)).size).toBe(articles.length);

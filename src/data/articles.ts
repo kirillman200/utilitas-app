@@ -1,4 +1,10 @@
+export type ArticleBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'orderedList'; items: string[] }
+  | { type: 'table'; caption: string; headers: string[]; rows: string[][] };
+
 export interface ArticleSection {
+  blocks?: ArticleBlock[];
   heading: string;
   paragraphs: string[];
   bullets?: string[];
@@ -6,6 +12,9 @@ export interface ArticleSection {
 }
 
 export interface ArticleDefinition {
+  ogDescription?: string;
+  closing?: string[];
+  takeawaysIntro?: string;
   image?: { src: string; alt: string; width: number; height: number };
   slug: string;
   title: string;
@@ -27,6 +36,188 @@ export interface ArticleDefinition {
 }
 
 export const articles: ArticleDefinition[] = [
+  {
+  "slug": "test-browser-calculator-offline",
+  "title": "Offline browser calculator: test before travel",
+  "shortTitle": "Test a calculator offline",
+  "description": "Test an offline browser calculator before travelling. Check input changes, reloads and saved results, then prepare a fallback for losing connectivity.",
+  "ogDescription": "A working tab and a working offline reload are different checks. Rehearse both, preserve a readable result and plan for the stage that fails.",
+  "topic": "Plan",
+  "readTime": "6 min read",
+  "published": "2026-11-17",
+  "updated": "2026-11-17",
+  "intro": "To test an offline browser calculator, run a small example online, disconnect and change an input, then separately reload or reopen the page. Save a readable record of the inputs and result before risking the open tab. Use the calculator away from a connection only for the steps your own rehearsal completed.",
+  "sections": [
+    {
+      "heading": "What should you calculate while you are still online?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choose the exact calculator page and the device, browser and profile you will take with you. Open the options your task needs while connected. For a shopping trip, that could mean selecting the right volume unit and recording the coverage from a paint label, rather than opening only the tool's home page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use harmless trial values with an easily checked answer. In the [Project Quantity Lab paint-coverage calculator](https://home.utilitas.app/calculators/paint-coverage/), try two containers of one US gallon each, example coverage of 400 square feet per US gallon per coat, two coats and zero contingency. The calculation is 2 × 1 × 400 ÷ 2 = 400 square feet of project area."
+        },
+        {
+          "type": "paragraph",
+          "text": "Those values are rehearsal inputs, not coverage advice for a real paint product. For the real job, retain the product's coverage and your chosen allowance; use the separate [calculator-result checking method](/articles/how-to-check-an-online-calculator-result/) to validate the estimate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down the page address, trial inputs, units and online result. Give the note a date and browser name so you can reproduce the same check later."
+        }
+      ]
+    },
+    {
+      "heading": "Does changing an input still work after you disconnect?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On your own device, turn off the connections it can actually use, including Wi-Fi, mobile data or Ethernet as applicable. Keep the loaded calculator open. For an alternative desktop test, [Chrome documents selecting Offline in the Network panel's throttling menu](https://developer.chrome.com/docs/devtools/network/reference#offline); restore the normal setting when finished."
+        },
+        {
+          "type": "paragraph",
+          "text": "Change one input that should visibly change the answer. In the paint example, change the number of containers from two to three, leaving the other values alone. The expected project area becomes 3 × 1 × 400 ÷ 2 = 600 square feet. Activate the calculation control if the tool requires one, then check the result and its units."
+        },
+        {
+          "type": "paragraph",
+          "text": "Record “open-tab recalculation passed” only when the changed answer appears. An unchanged number leaves the test unresolved: check whether you missed a required action or the page reports a connection problem."
+        },
+        {
+          "type": "paragraph",
+          "text": "[MDN explains how service workers can provide cached resources offline](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers). A calculator already running in a tab and a calculator loading from scratch are different situations, so give each its own result. The [browser-first privacy explanation](/articles/what-browser-first-tools-do-for-privacy/) covers the separate question of where processing and page traffic happen."
+        }
+      ]
+    },
+    {
+      "heading": "Can the calculator reload or open in a new tab offline?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before reloading, copy the trial inputs, units and changed result into a local note you can reopen without a connection. For this example, preserve “three one-US-gallon containers, 400 sq ft per US gallon per coat, two coats, zero contingency, 600 sq ft project area”. Keep that note outside the calculator tab you are about to reload."
+        },
+        {
+          "type": "orderedList",
+          "items": [
+            "Reload the exact calculator page normally while disconnected. Look for usable input controls, not just a heading, cached explanation or offline notice.",
+            "If the controls return, enter the trial again and check that the result changes.",
+            "Open the same address in a new tab and repeat the required interaction. For this check, disconnect the device's connections before opening the address, rather than relying on the original tab's DevTools setting."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Log the stages separately. A page can display an offline fallback without providing the calculator you need. [Chrome's caching-strategy reference](https://developer.chrome.com/docs/workbox/caching-strategies-overview) describes different ways requests reach the network or cached resources, which is why the reload itself belongs in the rehearsal."
+        },
+        {
+          "type": "paragraph",
+          "text": "Treat saved inputs as a separate observation too. [MDN describes localStorage data persisting across browser sessions](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage); seeing a saved-project message is not evidence that your required calculator controls loaded."
+        }
+      ]
+    },
+    {
+      "heading": "How do you keep a usable result and restore connectivity?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Open your saved local note while still disconnected and compare it with the values you intended to keep. If you need a printout, PDF or the tool's documented export, exercise that route as a separate check. Inspect the actual output for units, assumptions and the complete result, rather than relying on a save notification."
+        },
+        {
+          "type": "paragraph",
+          "text": "A readable result is enough when you only need to consult the 600-square-foot trial at a shop. If you must edit the scenario later, test its documented save-and-reopen workflow as well. The [browser-work backup guide](/articles/back-up-browser-saved-work/) explains the difference between keeping output and preserving editable work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Restore connectivity and reopen the calculator. Compare its inputs with your note before continuing: a returned page may show defaults instead of the scenario you just tested. Re-enter the preserved values if needed and confirm the result again."
+        }
+      ]
+    },
+    {
+      "heading": "What happened in a real browser rehearsal?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On November 17, 2026, an automated run used headless Chromium 159.0.8154.6 on Linux, a fresh browser context and the paint-coverage page linked above. It loaded the page online, declined optional analytics, entered the trial inputs and then simulated offline mode for that browser context without clearing caches."
+        },
+        {
+          "type": "table",
+          "caption": "Paint-coverage rehearsal results, November 17, 2026",
+          "headers": [
+            "Stage",
+            "Observation",
+            "Decision for this run"
+          ],
+          "rows": [
+            [
+              "Online baseline",
+              "Two containers produced 400 sq ft of project area.",
+              "Baseline established."
+            ],
+            [
+              "Open tab, disconnected",
+              "Changing to three containers produced 600 sq ft.",
+              "Recalculation passed."
+            ],
+            [
+              "Local record, disconnected",
+              "Automation saved the observed inputs and result as a text file, reopened it locally and matched the result text.",
+              "Readable record passed; no tool export tested."
+            ],
+            [
+              "Normal reload, disconnected",
+              "An “OFFLINE MODE” fallback appeared, with no numeric calculator inputs.",
+              "Calculator reload failed."
+            ],
+            [
+              "Same address in a new tab, disconnected",
+              "No numeric calculator inputs appeared.",
+              "Calculator reopening failed."
+            ],
+            [
+              "Reconnected page",
+              "The calculator returned with its default inputs, rather than the trial scenario.",
+              "Restore from the preserved record."
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These observations apply to that automated run; repeat the rehearsal on the device and browser profile you intend to use. The loaded calculator recalculated offline, but its controls did not return after an offline reload in this test."
+        }
+      ]
+    },
+    {
+      "heading": "What should you take if a stage fails?",
+      "paragraphs": [],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Match the fallback to what you will need. If you only need to read a finished estimate, take the checked local note or printed result. If you need to change inputs after closing the browser, add a full browser close-and-reopen check while the device is disconnected, then choose a workflow that passes it."
+        },
+        {
+          "type": "paragraph",
+          "text": "For the paint trial, the practical fallback is the inputs, the 400-square-foot baseline and the 600-square-foot alternative in a readable note, plus the simple arithmetic needed to adjust the number of containers. For a real shopping decision, carry the product coverage and units with that record."
+        }
+      ]
+    }
+  ],
+  "takeawaysIntro": "Keep three takeaways with your preparation checklist:",
+  "takeaways": [
+    "Test changed inputs and offline reopening separately.",
+    "Reopen a local record before risking the calculator tab.",
+    "Choose a fallback for the exact step that failed."
+  ],
+  "closing": [
+    "Choose the relevant calculator from the [Utilitas tool catalogue](/projects/), then run this rehearsal before you travel.",
+    "Sources checked November 2026.\n"
+  ],
+  "relatedProject": "project-quantity-lab"
+},
   {
     "slug": "check-browser-tool-keyboard-before-starting",
     "title": "Check a browser tool works with your keyboard before starting",
@@ -800,6 +991,7 @@ export const articles: ArticleDefinition[] = [
         heading: 'Device storage is still storage',
         paragraphs: [
           'Local storage, IndexedDB, and browser caches can preserve settings or work between sessions. That can be convenient, especially for offline-capable tools, but it means another person using the same browser profile may see saved data. Private browsing modes, browser cleanup settings, and device account separation affect how long local data remains available.',
+          'Before depending on a calculator away from a connection, [test whether it can recalculate, reload and leave you with a readable offline result](/articles/test-browser-calculator-offline/).',
           'Look for controls to clear saved work and understand what a reset removes. A site should not describe local storage as no storage. The accurate claim is that storage stays in the browser profile unless a sharing or synchronization feature explicitly sends it elsewhere.',
         ],
       },
