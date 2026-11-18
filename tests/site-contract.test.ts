@@ -147,6 +147,17 @@ describe('project catalogue contract', () => {
 });
 
 describe('Field Notes content contract', () => {
+  it('renders article titles without a repeated brand suffix across metadata', () => {
+    for (const article of articles) {
+      const html = read(outputFile(articlePath(article)));
+      expect(html, article.slug).toContain(`<title>${article.title}</title>`);
+      expect(html, article.slug).toContain(`property="og:title" content="${article.title}"`);
+      expect(html, article.slug).toContain(`name="twitter:title" content="${article.title}"`);
+      expect(html.match(/<h1(?:\s[^>]*)?>(.*?)<\/h1>/)?.[1], article.slug).toBe(article.title);
+      expect(html, article.slug).toContain(`rel="canonical" href="${absolute(articlePath(article))}"`);
+    }
+  });
+
   it('renders the offline rehearsal as usable links, ordered actions and tabular results', () => {
     const article = articles.find((item) => item.slug === 'test-browser-calculator-offline')!;
     const html = read(outputFile(articlePath(article)));

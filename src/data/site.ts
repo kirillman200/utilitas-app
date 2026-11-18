@@ -158,7 +158,7 @@ const coreRoutes = [
 
 export const articleRoutes = articles.map((article) => ({
   path: articlePath(article),
-  title: `${article.title} | Utilitas`,
+  title: article.title,
   description: article.description,
   kind: 'article',
 }));
