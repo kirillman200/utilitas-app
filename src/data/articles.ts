@@ -44,8 +44,8 @@ export const articles: ArticleDefinition[] = [
   "ogDescription": "A working tab and a working offline reload are different checks. Rehearse both, preserve a readable result and plan for the stage that fails.",
   "topic": "Plan",
   "readTime": "6 min read",
-  "published": "2026-11-17",
-  "updated": "2026-11-17",
+  "published": "2026-11-18",
+  "updated": "2026-11-18",
   "intro": "To test an offline browser calculator, run a small example online, disconnect and change an input, then separately reload or reopen the page. Save a readable record of the inputs and result before risking the open tab. Use the calculator away from a connection only for the steps your own rehearsal completed.",
   "sections": [
     {
